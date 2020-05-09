@@ -1,5 +1,7 @@
 <?php
 
+require("controller\loginControl.php");
+
 //checks to find out if the request methods if GET
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -10,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $password = md5($_POST['upassword']);
 
-        echo "\n You have successfully logged in!";
+        loginVerify($email, $password);        
 
     }
 
