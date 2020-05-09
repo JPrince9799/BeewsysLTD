@@ -1,3 +1,23 @@
+<?php
+
+//checks to find out if the request methods if GET
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+	//this checks that the button has been clicked
+    if(isset($_POST['lgnbtn'])) {
+
+        $email = $_POST['uemail'];
+
+        $password = md5($_POST['upassword']);
+
+        echo "\n You have successfully logged in!";
+
+    }
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,22 +31,22 @@
        <body >
            <!-- Form For Login -->
     
-           <form class="form-group col-md-4 mx-auto align-middle">
+        <form class="form-group col-md-4 mx-auto align-middle" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
                <div class="text-left">
                <img class="mb-6 " src="view/images/ashesi.png" alt="logo" width="30%">
             </div>
             <div class="form-group">
                 <label class="a text-left" for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email">
+                <input type="email" name="uemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email">
                 <!-- <small class="a" id="emailHelp">*Enter Email</small> -->
             </div>
             <div class="form-group">
                 <label class="a"  for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*Enter password">
+                <input type="password" name="upassword" class="form-control" id="exampleInputPassword1" placeholder="*Enter password">
                  <br><a class="a">Forgot Password?</a>
             </div>
             <div class="text-center">
-            <button type="submit" class="btn btn-outline-light">Login</button></div><hr>
+            <button type="submit" class="btn btn-outline-light" name="lgnbtn">Login</button></div><hr>
             <div class="text-center">
     
             <img class="mb-4 " src="view/images/logo_dark.png" alt="logo" width="20%"></div>
