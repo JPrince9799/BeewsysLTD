@@ -17,16 +17,16 @@
             </div>
             <div class="form-group">
                 <label class="a text-left" for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small class="a" id="emailHelp">*Enter Ashesi Email</small>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email">
+                <!-- <small class="a" id="emailHelp">*Enter Email</small> -->
             </div>
             <div class="form-group">
                 <label class="a"  for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-                 <a class="a">Forgot Password?</a>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*Enter password">
+                 <br><a class="a">Forgot Password?</a>
             </div>
             <div class="text-center">
-            <button type="submit" class="btn btn-outline-light">Submit</button></div><hr>
+            <button type="submit" class="btn btn-outline-light">Login</button></div><hr>
             <div class="text-center">
     
             <img class="mb-4 " src="view/images/logo_dark.png" alt="logo" width="20%"></div>
