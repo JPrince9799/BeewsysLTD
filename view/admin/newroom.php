@@ -17,8 +17,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>New Room - YouCheckedIn</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -26,15 +26,15 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../css/demo.css" rel="stylesheet" />
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
+        <div class="sidebar" data-image="../img/sidebar-5.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -48,7 +48,7 @@
                 </div>
                 <ul class="nav">
                     <li>
-                        <a class="nav-link" href="dashboard.html">
+                        <a class="nav-link" href="dashboard.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Dashboard</p>
                         </a>
@@ -58,36 +58,31 @@
                             Rooms
                         </a>
                     </div>
-                    <li>
-                        <a class="nav-link" href="./newroom.html">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./newroom.php">
                             <i class="nc-icon nc-simple-add"></i>
                             <p>New Rooms</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./viewroom.html">
+                        <a class="nav-link" href="./viewroom.php">
                             <i class="nc-icon nc-grid-45"></i>
                             <p>View Rooms</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./manroom.html">
+                    <li>
+                        <a class="nav-link" href="./manageroom.php">
                             <i class="nc-icon nc-preferences-circle-rotate"></i>
                             <p>Manage Rooms</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./notifications.html">
+                        <a class="nav-link" href="./notifications.php">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Notifications</p>
                         </a>
                     </li>
-                    <!-- <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="upgrade.html">
-                            <i class="nc-icon nc-alien-33"></i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li> -->
+                    
                 </ul>
             </div>
         </div>
@@ -131,9 +126,26 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
-
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="#pablo">
+                                    <span class="no-icon">Account</span>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="no-icon">Dropdown</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#pablo">
                                     <span class="no-icon">Log out</span>
                                 </a>
                             </li>
@@ -148,32 +160,39 @@
                         <div class="col-md-10">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Manage Room</h4>
+                                    <h4 class="card-title">Create Room</h4>
                                 </div>
                                 <div class="card-body">
                                     <form>
                                         <div class="row">
                                             <div class="col-md-5 pr-1">
                                                 <div class="form-group">
-                                                    <label>Room Name</label>
+                                                    <label>Lecture Hall</label>
                                                     <select type="text" class="form-control" placeholder="Lecture Hall">
-                                                        <option> Economics 101 </option>
-                                                        <option>Economics 202</option>
-                                                        
+                                                        <option> Founders Blk A101 </option>
+                                                        <option>Engineering R401</option>
+                                                        <option>Research Blk B301</option>
+                                                        <option>Main Hall A205</option>
+                                                        <option>Main Hall A101</option>
+                                                        <option>Research Blk A105</option>
+                                                        <option>Founders Blk A202</option>
+                                                        <option>Enginnering B204</option>
+                                                        <option>Research Blk B301</option>
+                                                        <option>Research Blk A103</option>
                                                          <!-- NOTE:Provisional but should be pulled from db -->
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 px-1">
                                                 <div class="form-group">
-                                                    <label>Max Room Capacity</label>
+                                                    <label>Max Hall Capacity</label>
                                                     <input readonly type="number " class="form-control " value="40 ">
                                                 </div>
                                             </div>
                                             <div class="col-md-4 pl-1 ">
                                                 <div class="form-group ">
-                                                    <label for="exampleIC">Current Capacity</label>
-                                                    <input readonly type="number" class="form-control " placeholder="34">
+                                                    <label for="exampleIC">Room Capacity</label>
+                                                    <input type="number" class="form-control " placeholder="Room Capacity">
                                                 </div>
                                             </div>
                                         </div>
@@ -181,7 +200,7 @@
                                         <div class="row ">
                                             <div class="col-md-12 ">
                                                 <div class="form-group ">
-                                                    <label>Change Room Name</label>
+                                                    <label>Room Name</label>
                                                     <input type="text " class="form-control " placeholder="Room Name " value="Econs 101 Cohort A">
                                                 </div>
                                             </div>
@@ -206,16 +225,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Add Students</label>
-                                                    <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike"> We will put the student checkbox thing here </textarea>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <button type="submit " class="btn btn-info btn-fill pull-right ">Save Room</button>
+                                        <button type="submit " class="btn btn-info btn-fill pull-right ">Create Room</button>
                                         <div class="clearfix "></div>
                                     </form>
                                 </div>
@@ -298,22 +309,22 @@
 
             <li class="active ">
                 <a class="img-holder switch-trigger " href="javascript:void(0) ">
-                    <img src="../assets/img/sidebar-1.jpg " alt=" " />
+                    <img src="../img/sidebar-1.jpg " alt=" " />
                 </a>
             </li>
             <li>
                 <a class="img-holder switch-trigger " href="javascript:void(0) ">
-                    <img src="../assets/img/sidebar-3.jpg " alt=" " />
+                    <img src="../img/sidebar-3.jpg " alt=" " />
                 </a>
             </li>
             <li>
                 <a class="img-holder switch-trigger " href="javascript:void(0) ">
-                    <img src="..//assets/img/sidebar-4.jpg " alt=" " />
+                    <img src="..//img/sidebar-4.jpg " alt=" " />
                 </a>
             </li>
             <li>
                 <a class="img-holder switch-trigger " href="javascript:void(0) ">
-                    <img src="../assets/img/sidebar-5.jpg " alt=" " />
+                    <img src="../img/sidebar-5.jpg " alt=" " />
                 </a>
             </li>
 
@@ -343,20 +354,20 @@
  -->
 </body>
 <!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.3.2.1.min.js " type="text/javascript "></script>
-<script src="../assets/js/core/popper.min.js " type="text/javascript "></script>
-<script src="../assets/js/core/bootstrap.min.js " type="text/javascript "></script>
+<script src="../js/core/jquery.3.2.1.min.js " type="text/javascript "></script>
+<script src="../js/core/popper.min.js " type="text/javascript "></script>
+<script src="../js/core/bootstrap.min.js " type="text/javascript "></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-<script src="../assets/js/plugins/bootstrap-switch.js "></script>
+<script src="../js/plugins/bootstrap-switch.js "></script>
 <!--  Google Maps Plugin    -->
 <script type="text/javascript " src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE "></script>
 <!--  Chartist Plugin  -->
-<script src="../assets/js/plugins/chartist.min.js "></script>
+<script src="../js/plugins/chartist.min.js "></script>
 <!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js "></script>
+<script src="../js/plugins/bootstrap-notify.js "></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
-<script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript "></script>
+<script src="../js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript "></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/js/demo.js "></script>
+<script src="../js/demo.js "></script>
 
 </html>
