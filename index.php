@@ -31,17 +31,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
        <body >
            <!-- Form For Login -->
     
-<<<<<<< HEAD
-        <form class="form-group col-md-4 mx-auto align-middle" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
-=======
-           <form class="form-group col-md-4 mx-auto align-middle" action="" method="Post" id="login_form ">
->>>>>>> 53d2e437cebdcd5affbc4f8ed22d0ae814bfe9a5
+
+        <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
+
                <div class="text-left">
                <img class="mb-6 " src="view/images/ashesi.png" alt="logo" width="30%">
             </div>
             <div class="form-group">
                 <label class="a text-left" for="exampleInputEmail1">Email address</label>
-<<<<<<< HEAD
+
                 <input type="email" name="uemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email">
                 <!-- <small class="a" id="emailHelp">*Enter Email</small> -->
             </div>
@@ -52,18 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div class="text-center">
             <button type="submit" class="btn btn-outline-light" name="lgnbtn">Login</button></div><hr>
-=======
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small class="a" id="emailHelp">*Enter Ashesi Email</small>
-            </div>
-            <div class="form-group">
-                <label class="a"  for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-                 <a class="a">Forgot Password?</a>
-            </div>
-            <div class="text-center">
-            <button type="submit" class="btn btn-outline-light">Submit</button></div><hr>
->>>>>>> 53d2e437cebdcd5affbc4f8ed22d0ae814bfe9a5
+
             <div class="text-center">
     
             <img class="mb-4 " src="view/images/logo_dark.png" alt="logo" width="20%"></div>
