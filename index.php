@@ -1,5 +1,13 @@
 <?php
 
+require('controller\session.php');
+
+//first check if there is an active session
+if(isset($_SESSION['id'])){
+	//if a session is created redirect them to the dashboard
+	header('Location: view\admin\dashboard.php');
+
+}
 
 ?>
 
