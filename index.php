@@ -1,31 +1,5 @@
 <?php
 
-require("controller/functions.php");
-
-//checks to find out if the request methods if GET
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-	//this checks that the button has been clicked
-    if(isset($_POST['lgnbtn'])) {
-
-        $email = $_POST['uemail'];
-
-        // $password = md5($_POST['upassword']);
-
-        $password = $_POST['upassword'];
-
-        $result = loginVerify($email, $password);
-
-        if($result){
-            header("Location: view/admin/dashboard.php");          
-        }
-        else{
-            echo "Login Unsuccessful";
-        }
-
-    }
-
-}
 
 ?>
 
@@ -43,7 +17,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            <!-- Form For Login -->
     
 
-        <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
+        <!-- <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST"> -->
+
+        <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="controller\loginControl.php" method="POST">
 
                <div class="text-left">
                <img class="mb-6 " src="view/images/ashesi.png" alt="logo" width="30%">
