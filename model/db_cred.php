@@ -6,7 +6,7 @@
     
     define('PASSWORD', '');
     
-    define('DB_NAME', '');
+    define('DB_NAME', 'youcheckedin');
 
 
 ?>

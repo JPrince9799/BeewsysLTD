@@ -5,7 +5,13 @@ require('controller\session.php');
 //first check if there is an active session
 if(isset($_SESSION['id'])){
 	//if a session is created redirect them to the dashboard
-	header('Location: view\admin\dashboard.php');
+    header('Location: view\admin\dashboard.php');
+} 
+//this checks that the button has been clicked
+if(isset($_POST['lgnbtn'])) {
+
+    //this gets the users email input
+    $email = $_POST['uemail'];
 
 }
 
@@ -35,7 +41,7 @@ if(isset($_SESSION['id'])){
             <div class="form-group">
                 <label class="a text-left" for="exampleInputEmail1">Email address</label>
 
-                <input type="email" name="uemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email">
+                <input type="email" name="uemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email" value = "<?php echo $email?>>
                 <!-- <small class="a" id="emailHelp">*Enter Email</small> -->
             </div>
             <div class="form-group">

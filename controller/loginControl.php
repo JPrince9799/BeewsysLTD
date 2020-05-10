@@ -1,6 +1,7 @@
 <?php 
 
 require('..\model\db_class.php');
+require('..\model\db_cred.php');
 
 //variable to create an instance of the database
 $db = new mysqli(DATABASE, USERNAME, PASSWORD, DB_NAME);
@@ -13,7 +14,7 @@ if(isset($_POST['lgnbtn'])) {
     $password = md5($_POST['upassword']);
    
     //this is a variable to hold the query that will run and fetch the users data.
-    $loginUser = "SELECT `usermail`, `upassword` FROM `users` WHERE usermail='$email' AND upassword='$password'";
+    $loginUser = "SELECT * FROM `users` WHERE usermail='$email' AND upassword='$password'";
     // $loginUser = "SELECT Fullname, uName, email, u_password FROM users WHERE email LIKE '%$email%' AND u_password LIKE '%$pword%'";
 
     //variable to store the query response
@@ -23,26 +24,22 @@ if(isset($_POST['lgnbtn'])) {
 
         while($row = $result->fetch_assoc()){
             //get the email of the user
-            $lemail = $row['email'];
+            $u_email = $row['usermail'];
             //get the password
-            $loginPassword = $row['u_password'];
+            $loginPassword = $row['upassword'];
 
             //compare the entered password with the database password
             if(
                 $lemail == $email &&
-                $loginPassword == md5($pword)
+                md5($loginPassword) == md5($password)
             ){
 
                 //create a session for the user that logs in succefully
                 $_SESSION['id'] = $row['u_id'];
 
-                $_SESSION['email'] = $row['email'];
+                $_SESSION['username'] = $row['username'];
 
-                $_SESSION['username'] = $row['uName'];
-
-                $_SESSION['name'] = $row['Fullname'];
-
-                $_SESSION['p_image'] = $row['user_img'];
+                $_SESSION['email'] = $row['usermail'];
                 
                 //direct the user to their dashboard
                 header('Location: view/admin/dashboard.php');
