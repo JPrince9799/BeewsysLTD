@@ -1,5 +1,7 @@
 <?php 
 
+require("../model/credentialClass.php");
+
 function sanitizeData($input) {
 	
     $data = trim($input);
@@ -14,7 +16,9 @@ function sanitizeData($input) {
 
 function loginVerify($username, $password){
 
-    
+    $verif_login = new registerAuthenticate();
+
+    print_r($verif_login->queryLogin($username, $password));
 
 }
 

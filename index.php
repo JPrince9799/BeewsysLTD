@@ -1,6 +1,6 @@
 <?php
 
-require("controller\loginControl.php");
+require("controller/functions.php");
 
 //checks to find out if the request methods if GET
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -10,9 +10,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $email = $_POST['uemail'];
 
-        $password = md5($_POST['upassword']);
+        // $password = md5($_POST['upassword']);
 
-        loginVerify($email, $password);        
+        $password = $_POST['upassword'];
+
+        $result = loginVerify($email, $password);
+
+        if($result){
+            header("Location: view/admin/dashboard.php");          
+        }
+        else{
+            echo "Login Unsuccessful";
+        }
 
     }
 
