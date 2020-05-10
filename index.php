@@ -6,13 +6,6 @@ require('controller\session.php');
 if(isset($_SESSION['id'])){
 	//if a session is created redirect them to the dashboard
     header('Location: view\admin\dashboard.php');
-} 
-//this checks that the button has been clicked
-if(isset($_POST['lgnbtn'])) {
-
-    //this gets the users email input
-    $email = $_POST['uemail'];
-
 }
 
 ?>
@@ -33,7 +26,7 @@ if(isset($_POST['lgnbtn'])) {
 
         <!-- <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST"> -->
 
-        <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="controller\loginControl.php" method="POST">
+        <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="controller/loginControl.php" method="POST">
 
                <div class="text-left">
                <img class="mb-6 " src="view/images/ashesi.png" alt="logo" width="30%">
@@ -41,8 +34,8 @@ if(isset($_POST['lgnbtn'])) {
             <div class="form-group">
                 <label class="a text-left" for="exampleInputEmail1">Email address</label>
 
-                <input type="email" name="uemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email" value = "<?php echo $email?>>
-                <!-- <small class="a" id="emailHelp">*Enter Email</small> -->
+                <input type="email" name="uemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email">
+                
             </div>
             <div class="form-group">
                 <label class="a"  for="exampleInputPassword1">Password</label>

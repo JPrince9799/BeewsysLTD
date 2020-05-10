@@ -1,24 +1,24 @@
 <?php 
 
-require('..\model\db_class.php');
-require('..\model\db_cred.php');
+require('../model/db_class.php');
+
 
 //variable to create an instance of the database
-$db = new mysqli(DATABASE, USERNAME, PASSWORD, DB_NAME);
+$db = new db_connection;
 
 //this checks that the button has been clicked
 if(isset($_POST['lgnbtn'])) {
 
     $email = $_POST['uemail'];
 
-    $password = md5($_POST['upassword']);
+    $password = $_POST['upassword'];
    
     //this is a variable to hold the query that will run and fetch the users data.
     $loginUser = "SELECT * FROM `users` WHERE usermail='$email' AND upassword='$password'";
     // $loginUser = "SELECT Fullname, uName, email, u_password FROM users WHERE email LIKE '%$email%' AND u_password LIKE '%$pword%'";
 
     //variable to store the query response
-    $result = $db->query($loginUser);
+    $result = $db->db_query($loginUser);
 
     if($result->num_rows > 0){
 
@@ -48,7 +48,7 @@ if(isset($_POST['lgnbtn'])) {
             else{
 
                 //error message if one of the entered data is incorrect
-                $error = "Email or Password Incorrect";
+                echo "Email or Password Incorrect";
 
             }
 
