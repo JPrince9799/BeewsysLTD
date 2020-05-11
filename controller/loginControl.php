@@ -13,14 +13,16 @@ if(isset($_POST['lgnbtn'])) {
     $password = $_POST['upassword'];
     
     //this is a variable to hold the query that will run and fetch the users data.
-    $loginUser = "SELECT * FROM `administrator` WHERE `adminEmail` = '$email' AND `adminPassword` = '$password'";
+    $loginAdmin = "SELECT * FROM `administrator` WHERE `adminEmail` = '$email' AND `adminPassword` = '$password'";
+    $loginUser = "SELECT * FROM `users` WHERE `usermail` = '$email' AND `upassword` = '$password'";
 
     //variable to store the query response
-    $result = $db->query($loginUser);
+    $result_admin = $db->query($loginAdmin);
+    $result_user = $db->query($loginUser);
 
-    if($result->num_rows > 0){
+    if($result_admin->num_rows > 0){
 
-        while($row = $result->fetch_assoc()){
+        while($row = $result_admin->fetch_assoc()){
             //get the email of the user
             $u_email = $row['adminEmail'];
             
@@ -40,22 +42,65 @@ if(isset($_POST['lgnbtn'])) {
 
                 $_SESSION['course'] = $row['crsename'];
 
-                $_SESSION['email'] = $row['usermail'];
+                $_SESSION['email'] = $row['adminEmail'];
                 
                 //direct the user to their dashboard
                 header('Location: ../view/admin/dashboard.php');
 
             }
             else{
-
-                //error message if one of the entered data is incorrect
-                // print_r($result);
-                header('Location: ../index.php');
+                echo "<script> 
+                    alert('Invalid Username or Password!');
+                    window.location.href ='../index.php';
+                    </script>";
 
             }
 
         }
 
+    }
+    else if($result_user->num_rows > 0){
+
+        while($row = $result_user->fetch_assoc()){
+            //get the email of the user
+            $u_email = $row['usermail'];
+            
+            //get the password
+            $loginPassword = $row['upassword'];
+
+            //compare the entered password with the database password
+            if(
+                $email == $u_email &&
+                md5($loginPassword) == md5($password)
+            ){
+
+                //create a session for the user that logs in succefully
+                $_SESSION['id'] = $row['userID'];
+
+                $_SESSION['username'] = $row['username'];
+
+                $_SESSION['email'] = $row['usermail'];
+                
+                //direct the user to their dashboard
+                header('Location: ../view/user/dashboard.php');
+
+            }
+            else{
+                echo "<script> 
+                    alert('Invalid Username or Password!');
+                    window.location.href ='../index.php';
+                    </script>";
+
+            }
+
+        }
+
+    }
+    else{
+        echo "<script> 
+            alert('Invalid Username or Password!');
+            window.location.href ='../index.php';
+            </script>";
     }
 
 }

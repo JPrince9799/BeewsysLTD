@@ -56,7 +56,7 @@ if(isset($_SESSION['username'])){
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href=# class="simple-text">
-                        YouCheckedIn <br> <?php echo $sessName;?>
+                        YouCheckedIn <br><br> <?php echo $sessName;?>
                     </a>
                 </div>
                 <ul class="nav">
