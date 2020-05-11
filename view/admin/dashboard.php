@@ -104,7 +104,7 @@ if(isset($_SESSION['username'])){
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <a class="navbar-brand" href="#"> Dashboard </a>
+                        <a class="navbar-brand mx-auto" href="#"> Dashboard </a>
                         <ul class="nav navbar-nav mr-auto">
                             
                             <li class="dropdown nav-item">
