@@ -34,7 +34,7 @@ if(isset($_SESSION['id'])){
 
                 <input type="email" name="uemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email">
 
-                <span name=invalidUsernames>Interesting</span>
+                <!-- <span name=invalidUsernames>Interesting</span> -->
                 
             </div>
             <div class="form-group">
