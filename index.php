@@ -1,11 +1,11 @@
 <?php
 
-require('controller\session.php');
+require('controller/session.php');
 
 //first check if there is an active session
 if(isset($_SESSION['id'])){
 	//if a session is created redirect them to the dashboard
-    header('Location: view\admin\dashboard.php');
+    header('Location: view/admin/dashboard.php');
 }
 
 ?>
@@ -23,8 +23,6 @@ if(isset($_SESSION['id'])){
        <body >
            <!-- Form For Login -->
     
-
-        <!-- <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST"> -->
 
         <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="controller/loginControl.php" method="POST">
 
