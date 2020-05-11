@@ -1,11 +1,34 @@
 <?php 
 
 require('../../controller/session.php');
+require('../../controller/model/db_cred.php');
 
 if(isset($_SESSION['username'])){
 	$admin = "Administrator";
 	$sessName = $_SESSION['username'];
 }
+//create instance of the database
+$db = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
+//run sql to query the rooms
+$sql = "SELECT * FROM `room`";
+//read the results of the room into the database
+$result1 = mysqli_query($db, $sql);
+// $result2 = mysqli_query($db, $sql);
+$options = "";
+$capacity = "";
+while($row1 = mysqli_fetch_array($result1)){
+    $options = $options."<option>$row1[1]</option>";
+}
+if(isset($_POST['LHall'])){
+
+    $lectureHall = $_POST['LHall'];
+    $sql = "SELECT `roomcapacity` FROM `room` WHERE `roomname`='$lectureHall'";
+    $result2 = mysqli_query($db, $sql);
+    $row2 = mysqli_fetch_array($result2);
+    $capacity = $lectureHall;
+
+}
+
 
 ?>
 
@@ -141,22 +164,15 @@ if(isset($_SESSION['username'])){
                                     <h4 class="card-title">Create Room</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form action="#" method="POST">
                                         <div class="row">
                                             <div class="col-md-5 pr-1">
                                                 <div class="form-group">
                                                     <label>Lecture Hall</label>
-                                                    <select type="text" class="form-control" placeholder="Lecture Hall">
-                                                        <option> Founders Blk A101 </option>
-                                                        <option>Engineering R401</option>
-                                                        <option>Research Blk B301</option>
-                                                        <option>Main Hall A205</option>
-                                                        <option>Main Hall A101</option>
-                                                        <option>Research Blk A105</option>
-                                                        <option>Founders Blk A202</option>
-                                                        <option>Enginnering B204</option>
-                                                        <option>Research Blk B301</option>
-                                                        <option>Research Blk A103</option>
+                                                    <select type="text" class="form-control" placeholder="Lecture Hall" name="LHall">
+                                                        
+                                                        <?php echo $options;?> 
+                                                        
                                                          <!-- NOTE:Provisional but should be pulled from db -->
                                                     </select>
                                                 </div>
@@ -164,13 +180,15 @@ if(isset($_SESSION['username'])){
                                             <div class="col-md-3 px-1">
                                                 <div class="form-group">
                                                     <label>Max Hall Capacity</label>
-                                                    <input readonly type="number " class="form-control " value="40 ">
+                                                    
+                                                    <input readonly type="number " class="form-control " value="<?php echo $capacity;?>">
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-4 pl-1 ">
                                                 <div class="form-group ">
                                                     <label for="exampleIC">Room Capacity</label>
-                                                    <input type="number" class="form-control " placeholder="Room Capacity">
+                                                    <input type="number" class="form-control " placeholder="Enter Room Capacity">
                                                 </div>
                                             </div>
                                         </div>
@@ -179,7 +197,7 @@ if(isset($_SESSION['username'])){
                                             <div class="col-md-12 ">
                                                 <div class="form-group ">
                                                     <label>Room Name</label>
-                                                    <input type="text " class="form-control " placeholder="Room Name " value="Econs 101 Cohort A">
+                                                    <input type="text " class="form-control " placeholder="Enter the room name ex: Econonimcs BS101 Cohort A">
                                                 </div>
                                             </div>
                                         </div>
@@ -187,7 +205,7 @@ if(isset($_SESSION['username'])){
                                             <div class="col-md-4 pr-1 ">
                                                 <div class="form-group ">
                                                     <label>Date</label>
-                                                    <input type="date " class="form-control " placeholder="Date">
+                                                    <input type="date" class="form-control " placeholder="Date">
                                                 </div>
                                             </div>
                                             <div class="col-md-4 px-1 ">
@@ -199,12 +217,12 @@ if(isset($_SESSION['username'])){
                                             <div class="col-md-4 pl-1 ">
                                                 <div class="form-group ">
                                                     <label>End Time</label>
-                                                    <input type="time " class="form-control " placeholder="End Time ">
+                                                    <input type="time" class="form-control " placeholder="End Time">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <button type="submit " class="btn btn-info btn-fill pull-right ">Create Room</button>
+                                        <button type="submit " class="btn btn-info btn-fill pull-right" name="createRoom">Create Room</button>
                                         <div class="clearfix "></div>
                                     </form>
                                 </div>
