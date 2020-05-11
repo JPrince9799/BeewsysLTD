@@ -18,8 +18,6 @@ if(isset($_POST['lgnbtn'])) {
     //variable to store the query response
     $result = $db->query($loginUser);
 
-    print_r($result);
-
     if($result->num_rows > 0){
 
         while($row = $result->fetch_assoc()){
@@ -49,6 +47,10 @@ if(isset($_POST['lgnbtn'])) {
             else{
 
                 //error message if one of the entered data is incorrect
+                $error = $_POST['invalidEmail'];
+
+                echo $error;
+
                 header('Location: ../index.php');
 
             }
