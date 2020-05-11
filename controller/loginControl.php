@@ -13,7 +13,7 @@ if(isset($_POST['lgnbtn'])) {
     $password = $_POST['upassword'];
     
     //this is a variable to hold the query that will run and fetch the users data.
-    $loginUser = "SELECT * FROM `users` WHERE `usermail`='$email' AND `upassword`='$password'";
+    $loginUser = "SELECT * FROM `administrator` WHERE `adminEmail` = '$email' AND `adminPassword` = '$password'";
 
     //variable to store the query response
     $result = $db->query($loginUser);
@@ -22,10 +22,10 @@ if(isset($_POST['lgnbtn'])) {
 
         while($row = $result->fetch_assoc()){
             //get the email of the user
-            $u_email = $row['usermail'];
+            $u_email = $row['adminEmail'];
             
             //get the password
-            $loginPassword = $row['upassword'];
+            $loginPassword = $row['adminPassword'];
 
             //compare the entered password with the database password
             if(
@@ -34,9 +34,11 @@ if(isset($_POST['lgnbtn'])) {
             ){
 
                 //create a session for the user that logs in succefully
-                $_SESSION['id'] = $row['userID'];
+                $_SESSION['id'] = $row['adminID'];
 
-                $_SESSION['username'] = $row['username'];
+                $_SESSION['name'] = $row['adminame'];
+
+                $_SESSION['course'] = $row['crsename'];
 
                 $_SESSION['email'] = $row['usermail'];
                 
@@ -47,10 +49,7 @@ if(isset($_POST['lgnbtn'])) {
             else{
 
                 //error message if one of the entered data is incorrect
-                $error = $_POST['invalidEmail'];
-
-                echo $error;
-
+                // print_r($result);
                 header('Location: ../index.php');
 
             }
