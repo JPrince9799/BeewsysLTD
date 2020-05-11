@@ -1,3 +1,14 @@
+<?php 
+
+require('../../controller/session.php');
+
+if(isset($_SESSION['username'])){
+	$admin = "Administrator";
+	$sessName = $_SESSION['username'];
+}
+
+?>
+
 <!--
 =========================================================
  Light Bootstrap Dashboard - v2.0.1
@@ -42,7 +53,7 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href=# class="simple-text">
-                    YouCheckedIn Username
+                    YouCheckedIn <br> <?php echo $sessName;?>
                 </a>
                 </div>
                 <ul class="nav">
