@@ -2,9 +2,9 @@
 
 require('../../controller/session.php');
 
-if(isset($_SESSION['username'])){
+if(isset($_SESSION['id'])){
 	$admin = "Administrator";
-	$sessName = $_SESSION['username'];
+	$sessName = $_SESSION['name'];
 }
 
 ?>
@@ -53,7 +53,7 @@ if(isset($_SESSION['username'])){
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href=# class="simple-text">
-                    YouCheckedIn <br> <?php echo $sessName;?>
+                    YouCheckedIn <br><br> <?php echo $admin . "<br>" .$sessName;?>
                 </a>
                 </div>
                 <ul class="nav">

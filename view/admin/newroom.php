@@ -3,14 +3,14 @@
 require('../../controller/session.php');
 require('../../controller/model/db_cred.php');
 
-if(isset($_SESSION['username'])){
+if(isset($_SESSION['id'])){
 	$admin = "Administrator";
-	$sessName = $_SESSION['username'];
+	$sessName = $_SESSION['name'];
 }
 //create instance of the database
 $db = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
 //run sql to query the rooms
-$sql = "SELECT * FROM `room`";
+$sql = "SELECT * FROM `lecturehalls`";
 //read the results of the room into the database
 $result1 = mysqli_query($db, $sql);
 // $result2 = mysqli_query($db, $sql);
@@ -76,7 +76,7 @@ if(isset($_POST['LHall'])){
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href=# class="simple-text">
-                        YouCheckedIn <br> <?php echo $sessName;?>
+                    YouCheckedIn <br><br> <?php echo $admin . "<br>" .$sessName;?>
                     </a>
                 </div>
                 <ul class="nav">
@@ -164,7 +164,7 @@ if(isset($_POST['LHall'])){
                                     <h4 class="card-title">Create Room</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="#" method="POST">
+                                    <form action="../../controller/newroomControl.php" method="POST">
                                         <div class="row">
                                             <div class="col-md-5 pr-1">
                                                 <div class="form-group">
@@ -181,14 +181,14 @@ if(isset($_POST['LHall'])){
                                                 <div class="form-group">
                                                     <label>Max Hall Capacity</label>
                                                     
-                                                    <input readonly type="number " class="form-control " value="<?php echo $capacity;?>">
+                                                    <input readonly type="number " class="form-control" value="<?php echo $capacity;?>">
                                                     
                                                 </div>
                                             </div>
                                             <div class="col-md-4 pl-1 ">
                                                 <div class="form-group ">
                                                     <label for="exampleIC">Room Capacity</label>
-                                                    <input type="number" class="form-control " placeholder="Enter Room Capacity">
+                                                    <input type="number" class="form-control" name="roomCapacity" placeholder="Enter Room Capacity">
                                                 </div>
                                             </div>
                                         </div>
@@ -197,7 +197,7 @@ if(isset($_POST['LHall'])){
                                             <div class="col-md-12 ">
                                                 <div class="form-group ">
                                                     <label>Room Name</label>
-                                                    <input type="text " class="form-control " placeholder="Enter the room name ex: Econonimcs BS101 Cohort A">
+                                                    <input type="text " class="form-control" name="roomName" placeholder="Enter the room name ex: Econonimcs BS101 Cohort A">
                                                 </div>
                                             </div>
                                         </div>
@@ -205,19 +205,19 @@ if(isset($_POST['LHall'])){
                                             <div class="col-md-4 pr-1 ">
                                                 <div class="form-group ">
                                                     <label>Date</label>
-                                                    <input type="date" class="form-control " placeholder="Date">
+                                                    <input type="date" class="form-control" name="data" placeholder="Date">
                                                 </div>
                                             </div>
                                             <div class="col-md-4 px-1 ">
                                                 <div class="form-group ">
                                                     <label>Start Time</label>
-                                                    <input type="time" class="form-control " placeholder="Start Time">
+                                                    <input type="time" class="form-control" name="startTime" placeholder="Start Time">
                                                 </div>
                                             </div>
                                             <div class="col-md-4 pl-1 ">
                                                 <div class="form-group ">
                                                     <label>End Time</label>
-                                                    <input type="time" class="form-control " placeholder="End Time">
+                                                    <input type="time" class="form-control" name="endTime" placeholder="End Time">
                                                 </div>
                                             </div>
                                         </div>
