@@ -8,5 +8,4 @@
     
     define("DATABASE", "youcheckedin");
 
-
 ?>

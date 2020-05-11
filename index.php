@@ -33,6 +33,8 @@ if(isset($_SESSION['id'])){
                 <label class="a text-left" for="exampleInputEmail1">Email address</label>
 
                 <input type="email" name="uemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email">
+
+                <span name=invalidUsernames>Interesting</span>
                 
             </div>
             <div class="form-group">
