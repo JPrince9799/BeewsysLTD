@@ -205,7 +205,7 @@ if(isset($_POST['LHall'])){
                                             <div class="col-md-4 pr-1 ">
                                                 <div class="form-group ">
                                                     <label>Date</label>
-                                                    <input type="date" class="form-control" name="data" placeholder="Date">
+                                                    <input type="date" class="form-control" name="roomdate" placeholder="Date">
                                                 </div>
                                             </div>
                                             <div class="col-md-4 px-1 ">

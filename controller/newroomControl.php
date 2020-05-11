@@ -1,22 +1,34 @@
 <?php
 
-if(isset($_POST['newroom'])){
+require('model/db_class.php');
+require('session.php');
 
+if(isset($_POST['createRoom'])){
+    $adminID = $_SESSION['id'];
     $roomName = $_POST['roomName'];
     $lectureHall = $_POST['LHall'];
     $roomCapacity = $_POST['roomCapacity'];
-    $date = $_POST['date'];
+    $rdate = $_POST['roomdate'];
     $startTime = $_POST['startTime'];
     $endTime = $_POST['endTime'];
+    $db = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+    $createRoom = "INSERT INTO `rooms` (`roomID`, `adminID`, `roomname`, `lecturehall`, `roomcapacity`, `roomdate`, `starttime`, `endtime`) 
+    VALUES (NULL, '$adminID', '$roomName', '$lectureHall', '$roomCapacity', '$rdate', '$startTime', '$endTime');";
+    
+    $result = $db->query($createRoom);
 
-    $createRoom = "INSERT INTO `rooms` (adminID, roomname, lecturehall, roomcapacity, roomdate, starttime, endtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-    echo "$roomCapacity";
-    echo "$lectureHall";
-    echo "$roomName";
-    echo "$date";
-    echo "$startTime";
-    echo "$endTime";
+    if($result){
+        echo "<script> 
+                alert('Your room has been created!');
+                window.location.href ='../view/admin/newroom.php';
+                </script>";
+    }
+    else{
+        echo "<script> 
+                alert('Your room has not been created!');
+                window.location.href ='../view/admin/newroom.php';
+                </script>";
+    }
 
 }
 
