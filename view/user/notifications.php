@@ -149,7 +149,7 @@ if(isset($_SESSION['username'])){
                                     <h5>
                                         <small>Notification States</small>
                                     </h5>
-                                    <div class="alert alert-primary">
+                                    <!-- <div class="alert alert-primary">
                                         <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
                                             <i class="nc-icon nc-simple-remove"></i>
                                         </button>
@@ -162,7 +162,8 @@ if(isset($_SESSION['username'])){
                                         </button>
                                         <span>
                                             <b> Info - </b> This is a regular notification made with ".alert-info"</span>
-                                    </div>
+                                    </div> -->
+
                                     <div class="alert alert-success">
                                         <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
                                             <i class="nc-icon nc-simple-remove"></i>
@@ -170,6 +171,7 @@ if(isset($_SESSION['username'])){
                                         <span>
                                             <b> Success - </b> This is a regular notification made with ".alert-success"</span>
                                     </div>
+
                                     <div class="alert alert-warning">
                                         <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
                                             <i class="nc-icon nc-simple-remove"></i>
@@ -177,13 +179,14 @@ if(isset($_SESSION['username'])){
                                         <span>
                                             <b> Warning - </b> This is a regular notification made with ".alert-warning"</span>
                                     </div>
-                                    <div class="alert alert-danger">
+
+                                    <!-- <div class="alert alert-danger">
                                         <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
                                             <i class="nc-icon nc-simple-remove"></i>
                                         </button>
                                         <span>
                                             <b> Danger - </b> This is a regular notification made with ".alert-danger"</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <br>

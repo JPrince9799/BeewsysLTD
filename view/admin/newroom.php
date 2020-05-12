@@ -76,7 +76,7 @@ if(isset($_POST['LHall'])){
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href=# class="simple-text">
-                    YouCheckedIn <br><br> <?php echo $admin . "<br>" .$sessName;?>
+                    YouCheckedIn <br><br> <?php echo $sessName . "<br>" . "___________________". "<br>" .$admin;?>
                     </a>
                 </div>
                 <ul class="nav">

@@ -71,5 +71,19 @@ class db_connection
         return mysqli_fetch_assoc($this->results);
 
     }
+
+    public function read_rooms($filter=false){
+
+        $queryString = "SELECT *FROM `rooms`";
+        
+        if($filter){
+
+            $queryString = $queryString." where $filter";
+            
+        }
+
+        return $this->db_query($queryString);
+
+    }
 }
 ?>

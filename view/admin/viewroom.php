@@ -53,7 +53,7 @@ if(isset($_SESSION['id'])){
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href=# class="simple-text">
-                        YouCheckedIn <br><br> <?php echo $admin . "<br>" . $sessName;?>
+                    YouCheckedIn <br><br> <?php echo $sessName . "<br>" . "___________________". "<br>" .$admin;?>
                     </a>
                 </div>
                 <ul class="nav">
@@ -146,132 +146,65 @@ if(isset($_SESSION['id'])){
                         <div class="col-md-12">
                             <div class="card strpied-tabled-with-hover">
                                 <div class="card-header ">
-                                    <h4 class="card-title">Striped Table with Hover</h4>
-                                    <p class="card-category">Here is a subtitle for this table</p>
+                                <h4 class="card-title">View all Rooms You Created</h4>
+                                    <p class="card-category">This is a list of rooms that only you created!</p>
                                 </div>
                                 <div class="card-body table-full-width table-responsive">
-                                    <table class="table table-hover table-striped">
-                                        <thead>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Salary</th>
-                                            <th>Country</th>
-                                            <th>City</th>
-                                        </thead>
+                                         
+                                <?php
+                                    require('../../controller/model/db_class.php');
+
+                                    $viewRooms = new db_connection;
+                                
+                                    $viewRooms->read_rooms();
+
+                                    echo "<table class='table table-hover table-striped'>
+                                            <thead class='black white-text'>
+                                                <th>Room ID</th>
+                                                <th>Room Name</th>
+                                                <th>Lecture Hall</th>
+                                                <th>Date</th>
+                                                <th>Start Time</th>
+                                                <th>End Time Time</th>
+                                            </thead>";
+
+                                    while($row = $viewRooms->db_fetch()){
+
+                                        $id = $_SESSION['id'];
+                                        
+                                        if($row['adminID'] == $id){
+                                            $r_id = $row["roomID"];
+                                            $r_name = $row["roomname"];
+                                            $lhall = $row["lecturehall"];
+                                            $r_date = $row['roomdate'];
+                                            $strttime = $row['starttime'];
+                                            $endtime = $row['endtime'];
+
+                                        echo "
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
+                                                <th scope='row'>$r_id</th>
+                                                <td>$r_name</td>
+                                                <td>$lhall</td>
+                                                <td>$r_date</td>
+                                                <td>$strttime</td>
+                                                <td>$endtime</td>
+                                                <td>
+                                                <button class='btn btn-default btn-fill pull-right' name='createRoom'>
+                                                    <a href='../../controller/viewroomControl.php?deleteroom=$r_id'> DELETE ROOM </a>
+                                                </button>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>$38,735</td>
-                                                <td>Korea, South</td>
-                                                <td>Overland Park</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>$63,542</td>
-                                                <td>Malawi</td>
-                                                <td>Feldkirchen in Kärnten</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>$78,615</td>
-                                                <td>Chile</td>
-                                                <td>Gloucester</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        </tbody>";
+                                        }
+                                    }
+
+                                    echo "</table>";
+                                    ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="card card-plain table-plain-bg">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Table on Plain Background</h4>
-                                    <p class="card-category">Here is a subtitle for this table</p>
-                                </div>
-                                <div class="card-body table-full-width table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Salary</th>
-                                            <th>Country</th>
-                                            <th>City</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>$38,735</td>
-                                                <td>Korea, South</td>
-                                                <td>Overland Park</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>$63,542</td>
-                                                <td>Malawi</td>
-                                                <td>Feldkirchen in Kärnten</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>$78,615</td>
-                                                <td>Chile</td>
-                                                <td>Gloucester</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        
             <footer class="footer">
                 <div class="container-fluid">
                     <nav>
@@ -291,7 +224,7 @@ if(isset($_SESSION['id'])){
                                     Portfolio
                                 </a>
                             </li>
-                            <li>
+                            <li >
                                 <a href="#">
                                     Blog
                                 </a>
