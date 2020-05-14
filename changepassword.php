@@ -1,12 +1,4 @@
-<?php
 
-require('controller/session.php');
-
-//first check if there is an active session
-if(isset($_SESSION['id'])){
-	//if a session is created redirect them to the dashboard
-    header('Location: view/admin/dashboard.php');
-}
 
 ?>
 
@@ -24,12 +16,13 @@ if(isset($_SESSION['id'])){
            <!-- Form For Login -->
     
 
-        <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="controller/loginControl.php" method="POST">
+        <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="#" method="POST">
 
                <div class="text-left">
                <img class="mb-6 " src="view/images/ashesi.png" alt="logo" width="30%">
             </div>
             <div class="form-group">
+            <h3 style="color: white"> Change Password</h3>
                 <label class="a text-left" for="exampleInputEmail1">Email address</label>
 
                 <input type="email" name="uemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Enter email">
@@ -40,7 +33,10 @@ if(isset($_SESSION['id'])){
             <div class="form-group">
                 <label class="a"  for="exampleInputPassword1">Password</label>
                 <input type="password" name="upassword" class="form-control" id="exampleInputPassword1" placeholder="*Enter password">
-                 <br><a href ="changepassword.php"class="a">Forgot Password?</a>
+            </div>
+             <div class="form-group">
+                <label class="a"  for="exampleInputPassword1">Confirm Password</label>
+                <input type="password" name="ucpassword" class="form-control" id="exampleInputPassword2" placeholder="*Confirm password">
             </div>
             <div class="text-center">
             <button type="submit" class="btn btn-outline-light" name="lgnbtn">Login</button></div><hr>
