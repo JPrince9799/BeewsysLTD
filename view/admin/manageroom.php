@@ -134,7 +134,77 @@ if(isset($_SESSION['id'])){
                 </div>
             </nav>
             <!-- End Navbar -->
+
             <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card strpied-tabled-with-hover">
+                                <div class="card-header ">
+                                <h4 class="card-title">You are currently managing </h4>
+                                    <p class="card-category">You can manage the current room selected from this page!</p>
+                                </div>
+                                <div class="card-body table-full-width table-responsive">
+                                         
+                                <?php
+                                    require('../../controller/model/db_class.php');
+
+                                    $viewRooms = new db_connection;
+                                
+                                    $viewRooms->read_rooms();
+
+                                    echo "<table class='table table-hover table-striped'>
+                                            <thead class='black white-text'>
+                                                <th>Room ID</th>
+                                                <th>Room Name</th>
+                                                <th>Lecture Hall</th>
+                                                <th>Date</th>
+                                                <th>Start Time</th>
+                                                <th>End Time Time</th>
+                                            </thead>";
+
+                                    while($row = $viewRooms->db_fetch()){
+
+                                        $id = $_SESSION['id'];
+                                        
+                                        if($row['adminID'] == $id){
+                                            $r_id = $row["roomID"];
+                                            $r_name = $row["roomname"];
+                                            $lhall = $row["lecturehall"];
+                                            $r_date = $row['roomdate'];
+                                            $strttime = $row['starttime'];
+                                            $endtime = $row['endtime'];
+
+                                        echo "
+                                        <tbody>
+                                            <tr>
+                                                <th scope='row'>$r_id</th>
+                                                <td>$r_name</td>
+                                                <td>$lhall</td>
+                                                <td>$r_date</td>
+                                                <td>$strttime</td>
+                                                <td>$endtime</td>
+                                                <td>
+                                                <button class='btn btn-default btn-fill pull-right' name='createRoom'>
+                                                    <a href='../../controller/manageroomController.php?deleteroom=$r_id'> Manage Room </a>
+                                                </button>
+                                                
+                                                <button class='btn btn-default btn-fill pull-right' name='createRoom'>
+                                                    <a href='../../controller/viewroomControl.php?deleteroom=$r_id'> Delete Room </a>
+                                                </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>";
+                                        }
+                                    }
+
+                                    echo "</table>";
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+
+            <!-- <div class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-10">
@@ -152,7 +222,7 @@ if(isset($_SESSION['id'])){
                                                         <option> Economics 101 </option>
                                                         <option>Economics 202</option>
                                                         
-                                                         <!-- NOTE:Provisional but should be pulled from db -->
+                                                         ///NOTE:Provisional but should be pulled from db
                                                     </select>
                                                 </div>
                                             </div>
@@ -216,7 +286,8 @@ if(isset($_SESSION['id'])){
 
                     </div>
                 </div>
-            </div>
+            </div> -->
+
             <footer class="footer ">
                 <div class="container-fluid ">
                     <nav>

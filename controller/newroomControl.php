@@ -14,14 +14,17 @@ if(isset($_POST['createRoom'])){
     $endTime = $_POST['endTime'];
     
     $db = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
+    //sql query to insert the new room
     $createRoom = "INSERT INTO `rooms` (`roomID`, `adminID`, `roomname`, `lecturehall`, `roomcapacity`, `roomdate`, `starttime`, `endtime`) 
     VALUES (NULL, '$adminID', '$roomName', '$lectureHall', '$roomCapacity', '$rdate', '$startTime', '$endTime');";
+    //sql query to ensure that the entered
+    $maxCapacity = "SELECT `roomcapacity` FROM `lecturehalls` WHERE `lecturehall`='$lectureHall'";
     
     
 
     if($roomName!="" && $lectureHall!="" && $roomCapacity!="" && $rdate!="" && $startTime!="" && $endTime!=""){
-        $result = $db->query($createRoom);
-        if($result){
+        $result_room = $db->query($createRoom);
+        if($result_room){
             echo "<script> 
                     alert('Room created!');
                     window.location.href ='../view/admin/newroom.php';

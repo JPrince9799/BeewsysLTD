@@ -19,15 +19,6 @@ $capacity = "";
 while($row1 = mysqli_fetch_array($result1)){
     $options = $options."<option>$row1[1]</option>";
 }
-if(isset($_POST['LHall'])){
-
-    $lectureHall = $_POST['LHall'];
-    $sql = "SELECT `roomcapacity` FROM `room` WHERE `roomname`='$lectureHall'";
-    $result2 = mysqli_query($db, $sql);
-    $row2 = mysqli_fetch_array($result2);
-    $capacity = $lectureHall;
-
-}
 
 
 ?>

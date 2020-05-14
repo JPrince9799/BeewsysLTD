@@ -191,7 +191,11 @@ if(isset($_SESSION['id'])){
                                                 <td>$endtime</td>
                                                 <td>
                                                 <button class='btn btn-default btn-fill pull-right' name='createRoom'>
-                                                    <a href='../../controller/viewroomControl.php?deleteroom=$r_id'> DELETE ROOM </a>
+                                                    <a href='../../controller/manageroomController.php?deleteroom=$r_id'> Manage Room </a>
+                                                </button>
+                                                
+                                                <button class='btn btn-default btn-fill pull-right' name='createRoom'>
+                                                    <a href='../../controller/viewroomControl.php?deleteroom=$r_id'> Delete Room </a>
                                                 </button>
                                                 </td>
                                             </tr>
