@@ -136,11 +136,19 @@ while($row_manage = $viewRooms->db_fetch()){
                             
                         </ul>
                         <ul class="navbar-nav nav navbar-right ml-auto">
-
-                            <li class="nav-item">
+                        <!-- <li class="nav-item">
                                 <a class="nav-link" href="../../controller/logout.php">
                                     <span class="no-icon">Log out</span>
                                 </a>
+                            </li> -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <img src="../img/default-avatar.png" class="rounded-circle z-depth-3" alt="Display Image" style="width: 30px; height: 30px">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55">
+                                    <a class="dropdown-item" href="../../changepassword.php" >Change Password</a>
+                                    <a class="dropdown-item" href="../../controller/logout.php">Logout</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
