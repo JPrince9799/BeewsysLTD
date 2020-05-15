@@ -193,7 +193,7 @@ else{
                                                 <td>$endtime</td>
                                                 <td>
                                                 <button class='btn btn-default btn-fill pull-right' name='createRoom'>
-                                                    <a href='../../controller/manageroomController.php?manageroom=$r_id'> Manage Room </a>
+                                                    <a href='manageroom.php?manageroom=$r_id'> Manage Room </a>
                                                 </button>
                                                 
                                                 <button class='btn btn-default btn-fill pull-right' name='createRoom'>

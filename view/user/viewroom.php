@@ -163,6 +163,8 @@ else{
                                     while($row = $viewRooms->db_fetch()){
 
                                         $id = $_SESSION['user_id'];
+                                        $_SESSION['roomID'] = $row['roomID'];
+                                        $_SESSION['roomname'] = $row['roomname'];
 
                                         $r_id = $row["adminname"];
                                         $adminID = $row['adminID'];

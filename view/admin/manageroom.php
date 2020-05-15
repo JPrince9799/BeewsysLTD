@@ -144,56 +144,59 @@ else{
                         <div class="col-md-12">
                             <div class="card strpied-tabled-with-hover">
                                 <div class="card-header ">
-                                <h4 class="card-title">You are currently managing </h4>
+                                <h4 class="card-title">You are currently managing <?php echo $r_name;?></h4>
                                     <p class="card-category">You can manage the current room selected from this page!</p>
                                 </div>
                                 <div class="card-body table-full-width table-responsive">
                                          
                                 <?php
-                                    require('../../controller/model/db_class.php');
 
-                                    $viewRooms = new db_connection;
+                                require('../../controller/model/db_class.php');
                                 
-                                    $viewRooms->read_rooms();
+                                if(isset($_GET['manageroom'])) {
+
+                                    $room_id = $_GET['manageroom'];
+
+                                    $viewCheckin = new db_connection;
+                                
+                                    $viewCheckin->read_checkins($room_id);
 
                                     echo "<table class='table table-hover table-striped'>
                                             <thead class='black white-text'>
                                                 <th>Room ID</th>
                                                 <th>Room Name</th>
-                                                <th>Lecture Hall</th>
-                                                <th>Date</th>
-                                                <th>Start Time</th>
-                                                <th>End Time Time</th>
+                                                <th>user ID</th>
+                                                <th>User Name</th>
+                                                <th>Check-In Time</th>
                                             </thead>";
 
-                                    while($row = $viewRooms->db_fetch()){
+                                    while($row = $viewCheckin->db_fetch()){
 
-                                        $id = $_SESSION['id'];
+                                        $id = $_SESSION['admin_id'];
                                         
                                         if($row['adminID'] == $id){
                                             $r_id = $row["roomID"];
                                             $r_name = $row["roomname"];
-                                            $lhall = $row["lecturehall"];
-                                            $r_date = $row['roomdate'];
-                                            $strttime = $row['starttime'];
-                                            $endtime = $row['endtime'];
+                                            $userID = $row["userID"];
+                                            $userName = $row['username'];
+                                            $checkIn_time = $row['time'];
 
                                         echo "
                                         <tbody>
                                             <tr>
                                                 <th scope='row'>$r_id</th>
+                                                <td>$r_id</td>
                                                 <td>$r_name</td>
-                                                <td>$lhall</td>
-                                                <td>$r_date</td>
-                                                <td>$strttime</td>
-                                                <td>$endtime</td>
+                                                <td>$userID</td>
+                                                <td>$userName</td>
+                                                <td>$checkIn_time</td>
                                                 <td>
                                                 <button class='btn btn-default btn-fill pull-right' name='createRoom'>
-                                                    <a href='../../controller/manageroomController.php?deleteroom=$r_id'> Manage Room </a>
+                                                    <a href='../../controller/manageroomController.php?present=$r_id'> Present </a>
                                                 </button>
                                                 
                                                 <button class='btn btn-default btn-fill pull-right' name='createRoom'>
-                                                    <a href='../../controller/viewroomControl.php?deleteroom=$r_id'> Delete Room </a>
+                                                    <a href='../../controller/manageroomController.php?absent=$r_id'> Absent </a>
                                                 </button>
                                                 </td>
                                             </tr>
@@ -202,6 +205,7 @@ else{
                                     }
 
                                     echo "</table>";
+                                }
                                     ?>
                                 </div>
                             </div>

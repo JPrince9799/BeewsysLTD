@@ -85,5 +85,19 @@ class db_connection
         return $this->db_query($queryString);
 
     }
+
+    public function read_checkins($filter=false){
+
+        $queryString = "SELECT * FROM `checkin` WHERE `roomID` = '$filter'";
+        
+        if($filter){
+
+            $queryString = $queryString." where $filter";
+            
+        }
+
+        return $this->db_query($queryString);
+
+    }
 }
 ?>
