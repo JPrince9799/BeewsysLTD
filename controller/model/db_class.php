@@ -88,11 +88,11 @@ class db_connection
 
     public function read_checkins($filter=false){
 
-        $queryString = "SELECT * FROM `checkin` WHERE `roomID` = '$filter'";
+        $queryString = "SELECT * FROM `checkin`";
         
         if($filter){
 
-            $queryString = $queryString." where $filter";
+            $queryString = $queryString." WHERE $filter";
             
         }
 

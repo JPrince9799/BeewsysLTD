@@ -18,11 +18,9 @@ $sql = "SELECT * FROM `lecturehalls`";
 $result1 = mysqli_query($db, $sql);
 // $result2 = mysqli_query($db, $sql);
 $options = "";
-$capacity = "";
 while($row1 = mysqli_fetch_array($result1)){
     $options = $options."<option>$row1[1]</option>";
 }
-
 
 ?>
 
@@ -175,7 +173,7 @@ while($row1 = mysqli_fetch_array($result1)){
                                                 <div class="form-group">
                                                     <label>Max Hall Capacity</label>
                                                     
-                                                    <input readonly type="number " class="form-control" value="<?php echo $capacity;?>">
+                                                    <input readonly type="number " class="form-control" value="">
                                                     
                                                 </div>
                                             </div>

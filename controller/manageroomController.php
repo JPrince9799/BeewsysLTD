@@ -12,5 +12,13 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
     if(isset($_GET['absent'])) {
 
     }
+    if(isset($_GET['manageRoom'])){
+
+        $roomName = $_GET['manageroom'];
+
+
+        header('Location: ../view/admin/manageroom.php?manageroom=$roomName');
+
+    }
 }
 ?>

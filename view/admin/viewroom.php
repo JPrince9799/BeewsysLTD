@@ -191,14 +191,13 @@ else{
                                                 <td>$r_date</td>
                                                 <td>$strttime</td>
                                                 <td>$endtime</td>
+
                                                 <td>
-                                                <button class='btn btn-default btn-fill pull-right' name='createRoom'>
-                                                    <a href='manageroom.php?manageroom=$r_id'> Manage Room </a>
-                                                </button>
+                                                <a href='manageroom.php?manageroom=$r_id'>
+                                                <button class='btn btn-default btn-fill pull-right' name='createRoom'> Manage Room </button></a>
                                                 
-                                                <button class='btn btn-default btn-fill pull-right' name='createRoom'>
-                                                    <a href='../../controller/viewroomControl.php?deleteroom=$r_id'> Delete Room </a>
-                                                </button>
+                                                <a href='../../controller/viewroomControl.php?deleteroom=$r_id'>
+                                                <button class='btn btn-default btn-fill pull-right' name='createRoom'> Delete Room </button></a>
                                                 </td>
                                             </tr>
                                         </tbody>";

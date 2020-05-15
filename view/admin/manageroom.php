@@ -1,13 +1,22 @@
 <?php 
 
 require('../../controller/session.php');
+require('../../controller/model/db_class.php');
 
 if(isset($_SESSION['admin_id'])){
-	$admin = "Administrator";
+    $admin = "Administrator";
+    $admin_id = $_SESSION['admin_id'];
 	$sessName = $_SESSION['name'];
 }
 else{
     header('Location: ../../index.php');
+}
+$viewRooms = new db_connection;
+
+$viewRooms->read_rooms("adminID='$admin_id'");
+$options = "";
+while($row_manage = $viewRooms->db_fetch()){
+    $options = $options."<option>".$row_manage['roomname']."</option>";
 }
 
 ?>
@@ -42,6 +51,7 @@ else{
     <!-- CSS Files -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
+    <script src="../js/manageroom.js" type="text/javascript"></script>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../css/demo.css" rel="stylesheet" />
 </head>
@@ -144,69 +154,97 @@ else{
                         <div class="col-md-12">
                             <div class="card strpied-tabled-with-hover">
                                 <div class="card-header ">
-                                <h4 class="card-title">You are currently managing <?php echo $r_name;?></h4>
+                                <h4 class="card-title">Manage Your Created Rooms</h4>
                                     <p class="card-category">You can manage the current room selected from this page!</p>
                                 </div>
                                 <div class="card-body table-full-width table-responsive">
                                          
                                 <?php
 
-                                require('../../controller/model/db_class.php');
-                                
-                                if(isset($_GET['manageroom'])) {
+                                    // require('../../controller/model/db_class.php');
+                                    
+                                    if(isset($_GET['manageroom'])) {
 
-                                    $room_id = $_GET['manageroom'];
+                                        $room_id = $_GET['manageroom'];
 
-                                    $viewCheckin = new db_connection;
-                                
-                                    $viewCheckin->read_checkins($room_id);
+                                        $viewCheckin = new db_connection;
+                                    
+                                        $viewCheckin->read_checkins("roomID='$room_id'");
 
-                                    echo "<table class='table table-hover table-striped'>
-                                            <thead class='black white-text'>
-                                                <th>Room ID</th>
-                                                <th>Room Name</th>
-                                                <th>user ID</th>
-                                                <th>User Name</th>
-                                                <th>Check-In Time</th>
-                                            </thead>";
+                                        echo "<table class='table table-hover table-striped'>
+                                                <thead class='black white-text'>
+                                                    <th>Room ID</th>
+                                                    <th>Room Name</th>
+                                                    <th>user ID</th>
+                                                    <th>User Name</th>
+                                                    <th>Check-In Time</th>
+                                                </thead>";
 
-                                    while($row = $viewCheckin->db_fetch()){
+                                        while($row = $viewCheckin->db_fetch()){
 
-                                        $id = $_SESSION['admin_id'];
-                                        
-                                        if($row['adminID'] == $id){
-                                            $r_id = $row["roomID"];
-                                            $r_name = $row["roomname"];
-                                            $userID = $row["userID"];
-                                            $userName = $row['username'];
-                                            $checkIn_time = $row['time'];
+                                            $id = $_SESSION['admin_id'];
+                                            
+                                            if($row['adminID'] == $id){
+                                                $r_id = $row["roomID"];
+                                                $r_name = $row["roomname"];
+                                                $userID = $row["userID"];
+                                                $userName = $row['username'];
+                                                $checkIn_time = $row['time'];
 
-                                        echo "
-                                        <tbody>
-                                            <tr>
-                                                <th scope='row'>$r_id</th>
-                                                <td>$r_id</td>
-                                                <td>$r_name</td>
-                                                <td>$userID</td>
-                                                <td>$userName</td>
-                                                <td>$checkIn_time</td>
-                                                <td>
-                                                <button class='btn btn-default btn-fill pull-right' name='createRoom'>
-                                                    <a href='../../controller/manageroomController.php?present=$r_id'> Present </a>
-                                                </button>
-                                                
-                                                <button class='btn btn-default btn-fill pull-right' name='createRoom'>
-                                                    <a href='../../controller/manageroomController.php?absent=$r_id'> Absent </a>
-                                                </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>";
+                                            echo "
+                                            <tbody>
+                                                <tr>
+                                                    <th scope='row'>$r_id</th>
+                                                    <td>$r_name</td>
+                                                    <td>$userID</td>
+                                                    <td>$userName</td>
+                                                    <td>$checkIn_time</td>
+
+                                                    <td>
+                                                    <a href='../../controller/manageroomController.php?present=$r_id'>
+                                                    <button class='btn btn-default btn-fill pull-right' name='present'> Present </button></a>
+
+                                                    <a href='../../controller/manageroomController.php?absent=$r_id'>
+                                                    <button class='btn btn-default btn-fill pull-right' name='absent'> Absent </button></a>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>";
+                                            }
                                         }
-                                    }
 
-                                    echo "</table>";
-                                }
-                                    ?>
+                                        echo "</table>";
+                                    }
+                                    else{
+                                        echo "<form action='' method='GET>";
+                                        echo "
+                                        <div class='card-header '>
+                                            <h4 class='card-title'>Select a room to manage!</h4>
+                                        </div>";
+                                        echo "
+                                        <div class='card-body'>
+                                            <form action='../../controller/newroomControl.php' method='POST'>
+                                                <div class='row'>
+                                                    <div class='col-md-5 pr-1'>
+                                                        <div class='form-group'>
+                                                            <label> Choose Room Here: </label>
+                                                            <select type='text' class='-control' id='activeRoom'>
+                                                                
+                                                                <?php echo $options;?> 
+                                                                
+                                                            <!-- NOTE:Provisional but should be pulled from db -->
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>";
+                                        echo "
+                                        <!--<a href='../../controller/manageroomController.php?manageroom=$options'></a>-->
+                                        <button type='submit' class='btn btn-default btn-fill pull-right' name='manageRoom' onclick='manageRoom()'> Manage Room </button>";
+                                        echo "</form>";
+                                    }
+                                ?>
                                 </div>
                             </div>
                         </div>

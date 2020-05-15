@@ -53,8 +53,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
         $result_delete = $deleteRoom->db_query($sql_delete);
 
         if($result_delete){
-            echo "<script> alert('Room Deleted!') 
-                    window.location.href ='../view/admin/viewroom.php';</script>";
+            echo "
+            <script> window.location.href ='../view/admin/viewroom.php'; </script>";
         }
         else{
             echo "<script> alert('You cannot delete this room!') 
