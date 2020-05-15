@@ -78,7 +78,7 @@ class db_connection
         
         if($filter){
 
-            $queryString = $queryString." where $filter";
+            $queryString = $queryString." WHERE $filter";
             
         }
 

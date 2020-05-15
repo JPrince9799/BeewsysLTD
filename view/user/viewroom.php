@@ -152,6 +152,7 @@ else{
 
                                     echo "<table class='table table-hover table-striped'>
                                             <thead class='black white-text'>
+                                                <th>Roomd ID</th>
                                                 <th>Admin Name</th>
                                                 <th>Room Name</th>
                                                 <th>Lecture Hall</th>
@@ -162,11 +163,10 @@ else{
 
                                     while($row = $viewRooms->db_fetch()){
 
-                                        $id = $_SESSION['user_id'];
-                                        $_SESSION['roomID'] = $row['roomID'];
-                                        $_SESSION['roomname'] = $row['roomname'];
+                                        // $id = $_SESSION['user_id'];
 
-                                        $r_id = $row["adminname"];
+                                        $r_id = $row['roomID'];
+                                        $adminNme = $row['adminname'];
                                         $adminID = $row['adminID'];
                                         $r_name = $row["roomname"];
                                         $lhall = $row["lecturehall"];
@@ -178,6 +178,7 @@ else{
                                         <tbody>
                                             <tr>
                                                 <th scope='row'>$r_id</th>
+                                                <td>$adminNme</td>
                                                 <td>$r_name</td>
                                                 <td>$lhall</td>
                                                 <td>$r_date</td>
@@ -185,7 +186,7 @@ else{
                                                 <td>$endtime</td>
                                                 <td>
                                                 <button class='btn btn-default btn-fill pull-right' name='createRoom'>
-                                                    <a href='../../controller/viewroomControl.php?checkin=$id'> CHECK-IN </a>
+                                                    <a href='../../controller/viewroomControl.php?checkin=$r_id'> CHECK-IN </a>
                                                 </button>
                                                 </td>
                                             </tr>
