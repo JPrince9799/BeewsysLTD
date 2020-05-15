@@ -9,8 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
     if(isset($_GET['checkin'])) {
 
         $roomID = $_GET['checkin'];
-        $time = time();
-        // $time = date("h:i a");
+        $time = date("h:i a");
         $roomCheck = new db_connection;
         $roomCheck->read_rooms("roomID='$roomID'");
         $row = $roomCheck->db_fetch();
