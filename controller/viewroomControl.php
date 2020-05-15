@@ -7,8 +7,17 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 		
     if(isset($_GET['checkin'])) {
         
-        echo "<script> alert('$name');
+        echo "<script> alert('Checked In!');
                 window.location.href ='../view/user/notifications.php'; </script>";
+        
+        
+
+
+    }
+    if(isset($_GET['manageroom'])) {
+        
+        echo "<script> alert('$name');
+                window.location.href ='../view/admin/manageroom.php'; </script>";
 
 
     }

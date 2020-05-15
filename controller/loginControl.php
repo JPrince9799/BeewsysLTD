@@ -36,7 +36,7 @@ if(isset($_POST['lgnbtn'])) {
             ){
 
                 //create a session for the user that logs in succefully
-                $_SESSION['id'] = $row['adminID'];
+                $_SESSION['admin_id'] = $row['adminID'];
 
                 $_SESSION['name'] = $row['adminame'];
 
@@ -75,7 +75,7 @@ if(isset($_POST['lgnbtn'])) {
             ){
 
                 //create a session for the user that logs in succefully
-                $_SESSION['id'] = $row['userID'];
+                $_SESSION['user_id'] = $row['userID'];
 
                 $_SESSION['username'] = $row['username'];
 

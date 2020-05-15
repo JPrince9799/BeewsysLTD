@@ -3,9 +3,12 @@
 require('controller/session.php');
 
 //first check if there is an active session
-if(isset($_SESSION['id'])){
+if(isset($_SESSION['admin_id'])){
 	//if a session is created redirect them to the dashboard
     header('Location: view/admin/dashboard.php');
+}
+if(isset($_SESSION['user_id'])){
+    header('Location: view/user/dashboard.php');
 }
 
 ?>

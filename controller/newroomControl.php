@@ -4,8 +4,8 @@ require('model/db_class.php');
 require('session.php');
 
 if(isset($_POST['createRoom'])){
-    $adminID = $_SESSION['id'];
-    
+    $adminID = $_SESSION['admin_id'];
+    $adminName = $_SESSION['name'];
     $roomName = $_POST['roomName'];
     $lectureHall = $_POST['LHall'];
     $roomCapacity = $_POST['roomCapacity'];
@@ -15,8 +15,8 @@ if(isset($_POST['createRoom'])){
     
     $db = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
     //sql query to insert the new room
-    $createRoom = "INSERT INTO `rooms` (`roomID`, `adminID`, `roomname`, `lecturehall`, `roomcapacity`, `roomdate`, `starttime`, `endtime`) 
-    VALUES (NULL, '$adminID', '$roomName', '$lectureHall', '$roomCapacity', '$rdate', '$startTime', '$endTime');";
+    $createRoom = "INSERT INTO `rooms` (`roomID`, `adminID`, `adminname`, `roomname`, `lecturehall`, `roomcapacity`, `roomdate`, `starttime`, `endtime`) 
+    VALUES (NULL, '$adminID', '$adminName', '$roomName', '$lectureHall', '$roomCapacity', '$rdate', '$startTime', '$endTime');";
     //sql query to ensure that the entered
     $maxCapacity = "SELECT `roomcapacity` FROM `lecturehalls` WHERE `lecturehall`='$lectureHall'";
     

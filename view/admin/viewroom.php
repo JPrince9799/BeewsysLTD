@@ -2,11 +2,13 @@
 
 require('../../controller/session.php');
 
-if(isset($_SESSION['id'])){
+if(isset($_SESSION['admin_id'])){
 	$admin = "Administrator";
 	$sessName = $_SESSION['name'];
 }
-
+else{
+    header('Location: ../../index.php');
+}
 ?>
 
 <!--
@@ -170,7 +172,7 @@ if(isset($_SESSION['id'])){
 
                                     while($row = $viewRooms->db_fetch()){
 
-                                        $id = $_SESSION['id'];
+                                        $id = $_SESSION['admin_id'];
                                         
                                         if($row['adminID'] == $id){
                                             $r_id = $row["roomID"];
@@ -191,7 +193,7 @@ if(isset($_SESSION['id'])){
                                                 <td>$endtime</td>
                                                 <td>
                                                 <button class='btn btn-default btn-fill pull-right' name='createRoom'>
-                                                    <a href='../../controller/manageroomController.php?deleteroom=$r_id'> Manage Room </a>
+                                                    <a href='../../controller/manageroomController.php?manageroom=$r_id'> Manage Room </a>
                                                 </button>
                                                 
                                                 <button class='btn btn-default btn-fill pull-right' name='createRoom'>

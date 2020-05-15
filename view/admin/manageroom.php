@@ -2,9 +2,12 @@
 
 require('../../controller/session.php');
 
-if(isset($_SESSION['id'])){
+if(isset($_SESSION['admin_id'])){
 	$admin = "Administrator";
 	$sessName = $_SESSION['name'];
+}
+else{
+    header('Location: ../../index.php');
 }
 
 ?>

@@ -2,9 +2,11 @@
 
 require('../../controller/session.php');
 
-if(isset($_SESSION['username'])){
-	$admin = "Administrator";
+if(isset($_SESSION['user_id'])){
 	$sessName = $_SESSION['username'];
+}
+else{
+    header('Location: ../../index.php');
 }
 
 ?>
@@ -150,7 +152,7 @@ if(isset($_SESSION['username'])){
 
                                     echo "<table class='table table-hover table-striped'>
                                             <thead class='black white-text'>
-                                                <th>Room ID</th>
+                                                <th>Admin Name</th>
                                                 <th>Room Name</th>
                                                 <th>Lecture Hall</th>
                                                 <th>Date</th>
@@ -160,9 +162,9 @@ if(isset($_SESSION['username'])){
 
                                     while($row = $viewRooms->db_fetch()){
 
-                                        $id = $_SESSION['id'];
+                                        $id = $_SESSION['user_id'];
 
-                                        $r_id = $row["roomID"];
+                                        $r_id = $row["adminname"];
                                         $adminID = $row['adminID'];
                                         $r_name = $row["roomname"];
                                         $lhall = $row["lecturehall"];

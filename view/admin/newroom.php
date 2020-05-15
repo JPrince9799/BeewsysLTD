@@ -3,9 +3,12 @@
 require('../../controller/session.php');
 require('../../controller/model/db_cred.php');
 
-if(isset($_SESSION['id'])){
+if(isset($_SESSION['admin_id'])){
 	$admin = "Administrator";
 	$sessName = $_SESSION['name'];
+}
+else{
+    header('Location: ../../index.php');
 }
 //create instance of the database
 $db = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
