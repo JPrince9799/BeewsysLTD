@@ -17,7 +17,7 @@ if(isset($_POST['editRoom'])){
     
     $db = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
     //sql query to insert the new room
-    $createRoom = "INSERT INTO `rooms` (`roomID`, `adminID`, `adminname`, `roomname`, `lecturehall`, `roomcapacity`, `roomdate`, `starttime`, `endtime`) 
+    $updateRoom = "INSERT INTO `rooms` (`roomID`, `adminID`, `adminname`, `roomname`, `lecturehall`, `roomcapacity`, `roomdate`, `starttime`, `endtime`) 
     VALUES (NULL, '$adminID', '$adminName', '$roomName', '$lectureHall', '$roomCapacity', '$rdate', '$startTime', '$endTime');";
     //sql query to ensure that the entered
     $maxCapacity = "SELECT `roomcapacity` FROM `lecturehalls` WHERE `lecturehall`='$lectureHall'";
