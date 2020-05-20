@@ -22,7 +22,7 @@ $options = "";
 while($row_manage = $viewRooms->db_fetch()){
     $options = $options."<option>".$row_manage['roomname']."</option>";
 }
-$hall = "SELECT * FROM `lecturehalls`";
+$hall = "SELECT * FROM `lecturehalls_youcheckedin`";
 //read the results of the room into the database
 $result1 = mysqli_query($formStuff, $hall);
 
@@ -200,7 +200,7 @@ while($row1 = mysqli_fetch_array($result1)){
                                             <div class="col-md-5 ">
                                                 <div class="form-group ">
                                                     <label>Select Room to Manage</label>
-                                                     <select type="text" class="form-control" placeholder="Room" name="oldRoom>
+                                                     <select type="text" class="form-control" placeholder="Room" name="oldRoom">
                                                         
                                                         <?php echo $options;?> 
                                                     

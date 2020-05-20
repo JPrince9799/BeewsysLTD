@@ -7,7 +7,7 @@ require('session.php');
 if(isset($_POST['editRoom'])){
     $adminID = $_SESSION['admin_id'];
     $adminName = $_SESSION['name'];
-    $currentroom = $_POST['oldRoom']
+    $currentroom = $_POST['oldRoom'];
     $roomName = $_POST['roomName'];
     $lectureHall = $_POST['LHall'];
     $roomCapacity = $_POST['roomCapacity'];
@@ -17,10 +17,10 @@ if(isset($_POST['editRoom'])){
     
     $db = new mysqli(SERVER, USERNAME, PASSWORD, DATABASE);
     //sql query to insert the new room
-    $updateRoom = "INSERT INTO `rooms` (`roomID`, `adminID`, `adminname`, `roomname`, `lecturehall`, `roomcapacity`, `roomdate`, `starttime`, `endtime`) 
+    $updateRoom = "INSERT INTO `rooms_youcheckedin` (`roomID`, `adminID`, `adminname`, `roomname`, `lecturehall`, `roomcapacity`, `roomdate`, `starttime`, `endtime`) 
     VALUES (NULL, '$adminID', '$adminName', '$roomName', '$lectureHall', '$roomCapacity', '$rdate', '$startTime', '$endTime');";
     //sql query to ensure that the entered
-    $maxCapacity = "SELECT `roomcapacity` FROM `lecturehalls` WHERE `lecturehall`='$lectureHall'";
+    $maxCapacity = "SELECT `roomcapacity` FROM `lecturehalls_youcheckedin` WHERE `lecturehall`='$lectureHall'";
     
     
 

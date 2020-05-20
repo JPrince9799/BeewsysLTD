@@ -230,33 +230,7 @@ while($row_manage = $viewRooms->db_fetch()){
                                         echo "</table>";
                                     }
                                     else{
-                                        echo "<form action='' method='GET>";
-                                        echo "
-                                        <div class='card-header '>
-                                            <h4 class='card-title'>Select a room to manage!</h4>
-                                        </div>";
-                                        echo "
-                                        <div class='card-body'>
-                                            <form action='../../controller/newroomControl.php' method='POST'>
-                                                <div class='row'>
-                                                    <div class='col-md-5 pr-1'>
-                                                        <div class='form-group'>
-                                                            <label> Choose Room Here: </label>
-                                                            <select type='text' class='-control' id='activeRoom'>
-                                                                
-                                                                <?php echo $options;?> 
-                                                                
-                                                            <!-- NOTE:Provisional but should be pulled from db -->
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>";
-                                        echo "
-                                        <!--<a href='../../controller/manageroomController.php?manageroom=$options'></a>-->
-                                        <button type='submit' class='btn btn-default btn-fill pull-right' name='manageRoom' onclick='manageRoom()'> Manage Room </button>";
-                                        echo "</form>";
+                                        echo "<script> window.location.href ='editroom.php'; </script>";
                                     }
                                 ?>
                                 </div>

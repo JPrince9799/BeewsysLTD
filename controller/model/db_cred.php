@@ -1,11 +1,11 @@
 <?php
 
-    define("SERVER", "localhost");
+    define("SERVER", "cs.ashesi.edu.gh");
     
-    define("USERNAME", "root");
+    define("USERNAME", "joseph_agbodjan");
     
-    define("PASSWORD", "");
+    define("PASSWORD", "joseph_agbodjan");
     
-    define("DATABASE", "youcheckedin");
+    define("DATABASE", "webtech_fall2019_");
 
 ?>
