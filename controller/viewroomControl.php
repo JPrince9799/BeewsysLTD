@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
         $user_id = $_SESSION['user_id'];
         $userName = $_SESSION['username'];
         
-        $sql_checkin = "INSERT INTO `checkin` (`assignID`, `adminID`, `roomID`, `roomname`, `userID`, `username`, `time`) VALUES (NULL, '$admin_id', '$roomID', '$room_name', '$user_id', '$userName', '$time');";
+        $sql_checkin = "INSERT INTO `checkin_youcheckedin` (`assignID`, `adminID`, `roomID`, `roomname`, `userID`, `username`, `time`) VALUES (NULL, '$admin_id', '$roomID', '$room_name', '$user_id', '$userName', '$time');";
 
         $checkin = new db_connection;
 

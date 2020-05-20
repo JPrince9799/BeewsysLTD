@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2020 at 11:43 PM
+-- Generation Time: May 20, 2020 at 10:29 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -21,16 +21,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `youcheckedin`
 --
-CREATE DATABASE IF NOT EXISTS `youcheckedin` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `youcheckedin`;
+-- CREATE DATABASE IF NOT EXISTS `youcheckedin` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `webtech_fall2019_`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `administrator`
+-- Table structure for table `administrator_youcheckedin`
 --
 
-CREATE TABLE `administrator` (
+CREATE TABLE `administrator_youcheckedin` (
   `adminID` int(11) NOT NULL,
   `adminame` varchar(50) NOT NULL,
   `crsename` varchar(30) NOT NULL,
@@ -39,14 +39,14 @@ CREATE TABLE `administrator` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONSHIPS FOR TABLE `administrator`:
+-- RELATIONSHIPS FOR TABLE `administrator_youcheckedin`:
 --
 
 --
--- Dumping data for table `administrator`
+-- Dumping data for table `administrator_youcheckedin`
 --
 
-INSERT INTO `administrator` (`adminID`, `adminame`, `crsename`, `adminEmail`, `adminPassword`) VALUES
+INSERT INTO `administrator_youcheckedin` (`adminID`, `adminame`, `crsename`, `adminEmail`, `adminPassword`) VALUES
 (1, 'Joseph Fisher', 'Economics 101', 'joseph.fisher@ashesi.edu.gh', 'fisher12345'),
 (2, 'Henry Brown', 'Calculus 2', 'henry.brown@ashesi.edu.gh', 'brown12345'),
 (3, 'Janet Agyeman', 'Pre-Calculus', 'janet.agyeman', 'janet12345'),
@@ -61,10 +61,10 @@ INSERT INTO `administrator` (`adminID`, `adminame`, `crsename`, `adminEmail`, `a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `checkin`
+-- Table structure for table `checkin_youcheckedin`
 --
 
-CREATE TABLE `checkin` (
+CREATE TABLE `checkin_youcheckedin` (
   `assignID` int(11) NOT NULL,
   `adminID` int(11) NOT NULL,
   `roomID` int(11) NOT NULL,
@@ -75,20 +75,20 @@ CREATE TABLE `checkin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONSHIPS FOR TABLE `checkin`:
+-- RELATIONSHIPS FOR TABLE `checkin_youcheckedin`:
 --   `adminID`
---       `administrator` -> `adminID`
+--       `administrator_youcheckedin` -> `adminID`
 --   `roomID`
---       `lecturehalls` -> `roomID`
+--       `lecturehalls_youcheckedin` -> `roomID`
 --   `userID`
---       `users` -> `userID`
+--       `users_youcheckedin` -> `userID`
 --
 
 --
--- Dumping data for table `checkin`
+-- Dumping data for table `checkin_youcheckedin`
 --
 
-INSERT INTO `checkin` (`assignID`, `adminID`, `roomID`, `roomname`, `userID`, `username`, `time`) VALUES
+INSERT INTO `checkin_youcheckedin` (`assignID`, `adminID`, `roomID`, `roomname`, `userID`, `username`, `time`) VALUES
 (33, 1, 5, 'Math MTH123 Cohort C', 2, 'kojo.ntim', '838:59:59'),
 (36, 1, 3, 'Multivariable Calculus CS102 Cohort A', 2, 'kojo.ntim', '00:00:00'),
 (38, 1, 10, 'Pre-Calculus Seminar Revision', 2, 'kojo.ntim', '00:00:00'),
@@ -97,24 +97,24 @@ INSERT INTO `checkin` (`assignID`, `adminID`, `roomID`, `roomname`, `userID`, `u
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lecturehalls`
+-- Table structure for table `lecturehalls_youcheckedin`
 --
 
-CREATE TABLE `lecturehalls` (
+CREATE TABLE `lecturehalls_youcheckedin` (
   `roomID` int(11) NOT NULL,
   `lecturehall` varchar(50) NOT NULL,
   `roomcapacity` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONSHIPS FOR TABLE `lecturehalls`:
+-- RELATIONSHIPS FOR TABLE `lecturehalls_youcheckedin`:
 --
 
 --
--- Dumping data for table `lecturehalls`
+-- Dumping data for table `lecturehalls_youcheckedin`
 --
 
-INSERT INTO `lecturehalls` (`roomID`, `lecturehall`, `roomcapacity`) VALUES
+INSERT INTO `lecturehalls_youcheckedin` (`roomID`, `lecturehall`, `roomcapacity`) VALUES
 (2, 'Founders Blk A101', 20),
 (3, 'Engineering R401', 30),
 (4, 'Research Blk B301', 50),
@@ -129,10 +129,10 @@ INSERT INTO `lecturehalls` (`roomID`, `lecturehall`, `roomcapacity`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reports`
+-- Table structure for table `reports_youcheckedin`
 --
 
-CREATE TABLE `reports` (
+CREATE TABLE `reports_youcheckedin` (
   `reportID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
@@ -143,18 +143,18 @@ CREATE TABLE `reports` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONSHIPS FOR TABLE `reports`:
+-- RELATIONSHIPS FOR TABLE `reports_youcheckedin`:
 --   `userID`
---       `users` -> `userID`
+--       `users_youcheckedin` -> `userID`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rooms`
+-- Table structure for table `rooms_youcheckedin`
 --
 
-CREATE TABLE `rooms` (
+CREATE TABLE `rooms_youcheckedin` (
   `roomID` int(11) NOT NULL,
   `adminID` int(11) NOT NULL,
   `adminname` varchar(50) NOT NULL,
@@ -167,16 +167,16 @@ CREATE TABLE `rooms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONSHIPS FOR TABLE `rooms`:
+-- RELATIONSHIPS FOR TABLE `rooms_youcheckedin`:
 --   `adminID`
---       `administrator` -> `adminID`
+--       `administrator_youcheckedin` -> `adminID`
 --
 
 --
--- Dumping data for table `rooms`
+-- Dumping data for table `rooms_youcheckedin`
 --
 
-INSERT INTO `rooms` (`roomID`, `adminID`, `adminname`, `roomname`, `lecturehall`, `roomcapacity`, `roomdate`, `starttime`, `endtime`) VALUES
+INSERT INTO `rooms_youcheckedin` (`roomID`, `adminID`, `adminname`, `roomname`, `lecturehall`, `roomcapacity`, `roomdate`, `starttime`, `endtime`) VALUES
 (1, 4, 'Kofi Nimo', 'Economics BS102 Cohort A', 'Main Hall A101', 12, '2020-05-13', '12:05:00', '14:00:00'),
 (3, 1, 'Joseph Fisher', 'Multivariable Calculus CS102 Cohort A', 'Enginnering B204', 12, '2020-05-22', '22:26:00', '12:26:00'),
 (5, 1, 'Joseph Fisher', 'Math MTH123 Cohort C', 'Research Blk A103', 20, '2020-05-26', '23:44:00', '13:45:00'),
@@ -187,10 +187,10 @@ INSERT INTO `rooms` (`roomID`, `adminID`, `adminname`, `roomname`, `lecturehall`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `users_youcheckedin`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `users_youcheckedin` (
   `userID` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `usermail` varchar(50) NOT NULL,
@@ -198,14 +198,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONSHIPS FOR TABLE `users`:
+-- RELATIONSHIPS FOR TABLE `users_youcheckedin`:
 --
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `users_youcheckedin`
 --
 
-INSERT INTO `users` (`userID`, `username`, `usermail`, `upassword`) VALUES
+INSERT INTO `users_youcheckedin` (`userID`, `username`, `usermail`, `upassword`) VALUES
 (1, 'richard.nettey', 'richard.nettey@ashesi.edu.gh', 'richie11112023'),
 (2, 'kojo.ntim', 'kojo.ntim@ashesi.edu.gh', 'ntim20222023'),
 (3, 'abigail.cole', 'abigail.cole@ashesi.edu.gh', 'cole30012022'),
@@ -233,44 +233,44 @@ INSERT INTO `users` (`userID`, `username`, `usermail`, `upassword`) VALUES
 --
 
 --
--- Indexes for table `administrator`
+-- Indexes for table `administrator_youcheckedin`
 --
-ALTER TABLE `administrator`
+ALTER TABLE `administrator_youcheckedin`
   ADD PRIMARY KEY (`adminID`);
 
 --
--- Indexes for table `checkin`
+-- Indexes for table `checkin_youcheckedin`
 --
-ALTER TABLE `checkin`
+ALTER TABLE `checkin_youcheckedin`
   ADD PRIMARY KEY (`assignID`),
   ADD KEY `room` (`roomID`),
   ADD KEY `user` (`userID`),
   ADD KEY `adminID` (`adminID`);
 
 --
--- Indexes for table `lecturehalls`
+-- Indexes for table `lecturehalls_youcheckedin`
 --
-ALTER TABLE `lecturehalls`
+ALTER TABLE `lecturehalls_youcheckedin`
   ADD PRIMARY KEY (`roomID`);
 
 --
--- Indexes for table `reports`
+-- Indexes for table `reports_youcheckedin`
 --
-ALTER TABLE `reports`
+ALTER TABLE `reports_youcheckedin`
   ADD PRIMARY KEY (`reportID`),
   ADD KEY `fk_user` (`userID`);
 
 --
--- Indexes for table `rooms`
+-- Indexes for table `rooms_youcheckedin`
 --
-ALTER TABLE `rooms`
+ALTER TABLE `rooms_youcheckedin`
   ADD PRIMARY KEY (`roomID`),
   ADD KEY `adminID` (`adminID`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `users_youcheckedin`
 --
-ALTER TABLE `users`
+ALTER TABLE `users_youcheckedin`
   ADD PRIMARY KEY (`userID`);
 
 --
@@ -278,39 +278,39 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `administrator`
+-- AUTO_INCREMENT for table `administrator_youcheckedin`
 --
-ALTER TABLE `administrator`
+ALTER TABLE `administrator_youcheckedin`
   MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `checkin`
+-- AUTO_INCREMENT for table `checkin_youcheckedin`
 --
-ALTER TABLE `checkin`
+ALTER TABLE `checkin_youcheckedin`
   MODIFY `assignID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- AUTO_INCREMENT for table `lecturehalls`
+-- AUTO_INCREMENT for table `lecturehalls_youcheckedin`
 --
-ALTER TABLE `lecturehalls`
+ALTER TABLE `lecturehalls_youcheckedin`
   MODIFY `roomID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `reports`
+-- AUTO_INCREMENT for table `reports_youcheckedin`
 --
-ALTER TABLE `reports`
+ALTER TABLE `reports_youcheckedin`
   MODIFY `reportID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `rooms`
+-- AUTO_INCREMENT for table `rooms_youcheckedin`
 --
-ALTER TABLE `rooms`
+ALTER TABLE `rooms_youcheckedin`
   MODIFY `roomID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `users_youcheckedin`
 --
-ALTER TABLE `users`
+ALTER TABLE `users_youcheckedin`
   MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
@@ -318,24 +318,24 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `checkin`
+-- Constraints for table `checkin_youcheckedin`
 --
-ALTER TABLE `checkin`
-  ADD CONSTRAINT `checkin_ibfk_1` FOREIGN KEY (`adminID`) REFERENCES `administrator` (`adminID`),
-  ADD CONSTRAINT `room` FOREIGN KEY (`roomID`) REFERENCES `lecturehalls` (`roomID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `user` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE;
+ALTER TABLE `checkin_youcheckedin`
+  ADD CONSTRAINT `checkin_youcheckedin_ibfk_1` FOREIGN KEY (`adminID`) REFERENCES `administrator_youcheckedin` (`adminID`),
+  ADD CONSTRAINT `room` FOREIGN KEY (`roomID`) REFERENCES `lecturehalls_youcheckedin` (`roomID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user` FOREIGN KEY (`userID`) REFERENCES `users_youcheckedin` (`userID`) ON DELETE CASCADE;
 
 --
--- Constraints for table `reports`
+-- Constraints for table `reports_youcheckedin`
 --
-ALTER TABLE `reports`
-  ADD CONSTRAINT `fk_user` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE;
+ALTER TABLE `reports_youcheckedin`
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`userID`) REFERENCES `users_youcheckedin` (`userID`) ON DELETE CASCADE;
 
 --
--- Constraints for table `rooms`
+-- Constraints for table `rooms_youcheckedin`
 --
-ALTER TABLE `rooms`
-  ADD CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`adminID`) REFERENCES `administrator` (`adminID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `rooms_youcheckedin`
+  ADD CONSTRAINT `rooms_youcheckedin_ibfk_1` FOREIGN KEY (`adminID`) REFERENCES `administrator_youcheckedin` (`adminID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -12,14 +12,17 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
         $date = date("Y/m/d");
         $time = date("h:i a");
         $roomCheck = new db_connection;
+        $userCheck = new db_connection;
         $roomCheck->read_rooms("roomID='$roomID'");
-        $row = $roomCheck->db_fetch();
-        $admiName = $row['adminname'];
-        $room_name = $row['roomname'];
-        $user_id = $_GET[''];
-        $userName = $_SESSION['username'];
+        $userCheck->read_checkins("roomID='$roomID'");
+        $row_roomcheck = $roomCheck->db_fetch();
+        $row_usercheck = $userCheck->db_fetch();
+        $admiName = $row_roomcheck['adminname'];
+        $room_name = $row_roomcheck['roomname'];
+        $user_id = $row_usercheck['userID'];
+        $userName = $row_usercheck['username'];
 
-        $sql_present = "INSERT INTO `checkin` (`reportID`, `userID`, `username`, `roomname`, `adminname`, `date`, `time`) VALUES (NULL, '$user_id', '$userName', '$room_name', '$admiName', '$date', '$time')";
+        $sql_present = "INSERT INTO `checkin_youcheckedin` (`reportID`, `userID`, `username`, `roomname`, `adminname`, `date`, `time`) VALUES (NULL, '$user_id', '$userName', '$room_name', '$admiName', '$date', '$time')";
 
         $present = new db_connection;
 

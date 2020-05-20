@@ -13,7 +13,7 @@ else{
 //create instance of the database
 $db = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
 //run sql to query the rooms
-$sql = "SELECT * FROM `lecturehalls`";
+$sql = "SELECT * FROM `lecturehalls_youcheckedin`";
 //read the results of the room into the database
 $result1 = mysqli_query($db, $sql);
 // $result2 = mysqli_query($db, $sql);

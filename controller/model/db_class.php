@@ -74,7 +74,7 @@ class db_connection
 
     public function read_rooms($filter=false){
 
-        $queryString = "SELECT *FROM `rooms`";
+        $queryString = "SELECT *FROM `rooms_youcheckedin`";
         
         if($filter){
 
@@ -88,7 +88,7 @@ class db_connection
 
     public function read_checkins($filter=false){
 
-        $queryString = "SELECT * FROM `checkin`";
+        $queryString = "SELECT * FROM `checkin_youcheckedin`";
         
         if($filter){
 

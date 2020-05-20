@@ -13,8 +13,8 @@ if(isset($_POST['lgnbtn'])) {
     $password = $_POST['upassword'];
     
     //this is a variable to hold the query that will run and fetch the users data.
-    $loginAdmin = "SELECT * FROM `administrator` WHERE `adminEmail` = '$email' AND `adminPassword` = '$password'";
-    $loginUser = "SELECT * FROM `users` WHERE `usermail` = '$email' AND `upassword` = '$password'";
+    $loginAdmin = "SELECT * FROM `administrator_youcheckedin` WHERE `adminEmail` = '$email' AND `adminPassword` = '$password'";
+    $loginUser = "SELECT * FROM `users_youcheckedin` WHERE `usermail` = '$email' AND `upassword` = '$password'";
 
     //variable to store the query response
     $result_admin = $db->query($loginAdmin);
