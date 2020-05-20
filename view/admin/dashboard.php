@@ -43,6 +43,9 @@ else{
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     
 
 </head>
@@ -83,6 +86,12 @@ else{
                         <a class="nav-link" href="./viewroom.php">
                             <i class="nc-icon nc-grid-45"></i>
                             <p>View Rooms</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./editroom.php">
+                            <i class="nc-icon nc-settings-tool-66"></i>
+                            <p>Edit Rooms</p>
                         </a>
                     </li>
                     <li>
@@ -157,11 +166,24 @@ else{
                         <div class="col-md-4">
                             <div class="card ">
                                 <div class="card-header ">
-                                    <h4 class="card-title">Email Statistics</h4>
-                                    <p class="card-category">Last Campaign Performance</p>
+                                    <h4 class="card-title">User Statistics</h4>
+                                    <p class="card-category">User Participation</p>
                                 </div>
                                 <div class="card-body ">
-                                    <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+                                    <div  class="ct-chart ct-perfect-fourth"></div>
+                                    <script>
+                                    var data = {
+                                        // A labels array that can contain any sort of values
+                                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                                        // Our series array that contains series objects or in this case series data arrays
+                                        series: [
+                                            [5, 2, 4, 2, 0]
+                                         ]};
+                                         // Create a new line chart object where as first parameter we pass in a selector
+                                         // that is resolving to our chart container element. The Second parameter
+                                         // is the actual data object.
+                                         new Chartist.Line('.ct-chart', data);
+                                    </script>
                                     <div class="legend">
                                         <i class="fa fa-circle text-info"></i> Open
                                         <i class="fa fa-circle text-danger"></i> Bounce

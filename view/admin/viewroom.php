@@ -80,7 +80,12 @@ else{
                         <a class="nav-link" href="./viewroom.php">
                             <i class="nc-icon nc-grid-45"></i>
                             <p>View Rooms</p>
-
+                        </a>
+                    </li>
+                   <li>
+                        <a class="nav-link" href="./editroom.php">
+                            <i class="nc-icon nc-settings-tool-66"></i>
+                            <p>Edit Rooms</p>
                         </a>
                     </li>
                     <li>
@@ -94,6 +99,7 @@ else{
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Notifications</p>
                         </a>
+                    </li>
                     </li>
                     <!-- <li class="nav-item active active-pro">
                                     <a class="nav-link active" href="upgrade.html">
