@@ -83,6 +83,12 @@ else{
                             <p>View Rooms</p>
                         </a>
                     </li>
+                   <li>
+                        <a class="nav-link" href="./editroom.php">
+                            <i class="nc-icon nc-settings-tool-66"></i>
+                            <p>Edit Rooms</p>
+                        </a>
+                    </li>
                     <li>
                         <a class="nav-link" href="./manageroom.php">
                             <i class="nc-icon nc-preferences-circle-rotate"></i>

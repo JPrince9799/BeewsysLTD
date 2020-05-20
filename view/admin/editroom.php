@@ -11,13 +11,36 @@ if(isset($_SESSION['admin_id'])){
 else{
     header('Location: ../../index.php');
 }
+//create instance of the database
+$formStuff = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
 $viewRooms = new db_connection;
 
+
 $viewRooms->read_rooms("adminID='$admin_id'");
+
 $options = "";
 while($row_manage = $viewRooms->db_fetch()){
     $options = $options."<option>".$row_manage['roomname']."</option>";
 }
+$hall = "SELECT * FROM `lecturehalls`";
+//read the results of the room into the database
+$result1 = mysqli_query($formStuff, $hall);
+
+$options1 = "";
+while($row1 = mysqli_fetch_array($result1)){
+    $options1 = $options1."<option>$row1[1]</option>";
+}
+
+$students = "SELECT * FROM `lecturehalls`";
+//read the results of the room into the database
+$result1 = mysqli_query($formStuff, $students);
+
+$options2 = "";
+while($row1 = mysqli_fetch_array($result1)){
+    $options2 = $options2."<option>$row1[1]</option>";
+}
+
+
 
 ?>
 
@@ -94,13 +117,13 @@ while($row_manage = $viewRooms->db_fetch()){
                             <p>View Rooms</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item active">
                         <a class="nav-link" href="./editroom.php">
                             <i class="nc-icon nc-settings-tool-66"></i>
                             <p>Edit Rooms</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li>
                         <a class="nav-link" href="./manageroom.php">
                             <i class="nc-icon nc-preferences-circle-rotate"></i>
                             <p>Manage Rooms</p>
@@ -171,94 +194,85 @@ while($row_manage = $viewRooms->db_fetch()){
                                 <h4 class="card-title">Manage Your Created Rooms</h4>
                                     <p class="card-category">You can manage the current room selected from this page!</p>
                                 </div>
-                                <div class="card-body table-full-width table-responsive">
-                                         
-                                <?php
-
-                                    // require('../../controller/model/db_class.php');
-                                    
-                                    if(isset($_GET['manageroom'])) {
-
-                                        $room_id = $_GET['manageroom'];
-
-                                        $viewCheckin = new db_connection;
-                                    
-                                        $viewCheckin->read_checkins("roomID='$room_id'");
-
-                                        echo "<table class='table table-hover table-striped'>
-                                                <thead class='black white-text'>
-                                                    <th>Room ID</th>
-                                                    <th>Room Name</th>
-                                                    <th>user ID</th>
-                                                    <th>User Name</th>
-                                                    <th>Check-In Time</th>
-                                                </thead>";
-
-                                        while($row = $viewCheckin->db_fetch()){
-
-                                            $id = $_SESSION['admin_id'];
-                                            
-                                            if($row['adminID'] == $id){
-                                                $r_id = $row["roomID"];
-                                                $r_name = $row["roomname"];
-                                                $userID = $row["userID"];
-                                                $userName = $row['username'];
-                                                $checkIn_time = $row['time'];
-
-                                            echo "
-                                            <tbody>
-                                                <tr>
-                                                    <th scope='row'>$r_id</th>
-                                                    <td>$r_name</td>
-                                                    <td>$userID</td>
-                                                    <td>$userName</td>
-                                                    <td>$checkIn_time</td>
-
-                                                    <td>
-                                                    <a href='../../controller/manageroomController.php?present=$r_id'>
-                                                    <button class='btn btn-default btn-fill pull-right' name='present'> Present </button></a>
-
-                                                    <a href='../../controller/manageroomController.php?absent=$r_id'>
-                                                    <button class='btn btn-default btn-fill pull-right' name='absent'> Absent </button></a>
-                                                    </td>
-
-                                                </tr>
-                                            </tbody>";
-                                            }
-                                        }
-
-                                        echo "</table>";
-                                    }
-                                    else{
-                                        echo "<form action='' method='GET>";
-                                        echo "
-                                        <div class='card-header '>
-                                            <h4 class='card-title'>Select a room to manage!</h4>
-                                        </div>";
-                                        echo "
-                                        <div class='card-body'>
-                                            <form action='../../controller/newroomControl.php' method='POST'>
-                                                <div class='row'>
-                                                    <div class='col-md-5 pr-1'>
-                                                        <div class='form-group'>
-                                                            <label> Choose Room Here: </label>
-                                                            <select type='text' class='-control' id='activeRoom'>
-                                                                
-                                                                <?php echo $options;?> 
-                                                                
-                                                            <!-- NOTE:Provisional but should be pulled from db -->
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                <div class="card-body">
+                                    <form action="../../controller/editRoomController.php" method="POST">
+                                    <div class="row ">
+                                            <div class="col-md-5 ">
+                                                <div class="form-group ">
+                                                    <label>Select Room to Manage</label>
+                                                     <select type="text" class="form-control" placeholder="Room" name="oldRoom>
+                                                        
+                                                        <?php echo $options;?> 
+                                                    
+                                                    </select>
                                                 </div>
-                                            </form>
-                                        </div>";
-                                        echo "
-                                        <!--<a href='../../controller/manageroomController.php?manageroom=$options'></a>-->
-                                        <button type='submit' class='btn btn-default btn-fill pull-right' name='manageRoom' onclick='manageRoom()'> Manage Room </button>";
-                                        echo "</form>";
-                                    }
-                                ?>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-5 pr-1">
+                                                <div class="form-group">
+                                                
+                                                    <label>Lecture Hall</label>
+                                                    <select type="text" class="form-control" placeholder="Lecture Hall" name="LHall">
+                                                        
+                                                        <?php echo $options1;?> 
+                                                        
+                                                         <!-- NOTE:Provisional but should be pulled from db -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 px-1">
+                                                <div class="form-group">
+                                                    <label>Max Hall Capacity</label>
+                                                    
+                                                    <input readonly type="number " class="form-control" value="">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 pl-1 ">
+                                                <div class="form-group ">
+                                                    <label for="exampleIC">Room Capacity</label>
+                                                    <input type="number" class="form-control" name="roomCapacity" placeholder="Enter Room Capacity">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row ">
+                                            <div class="col-md-12 ">
+                                                <div class="form-group ">
+                                                    <label>Room Name</label>
+                                                    <input type="text " class="form-control" name="roomName" placeholder="Enter the room name ex: Econonimcs BS101 Cohort A">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-md-4 pr-1 ">
+                                                <div class="form-group ">
+                                                    <label>Date</label>
+                                                    <input type="date" class="form-control" name="roomdate" placeholder="Date">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 px-1 ">
+                                                <div class="form-group ">
+                                                    <label>Start Time</label>
+                                                    <input type="time" class="form-control" name="startTime" placeholder="Start Time">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pl-1 ">
+                                                <div class="form-group ">
+                                                    <label>End Time</label>
+                                                    <input type="time" class="form-control" name="endTime" placeholder="End Time">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit " class="btn btn-info btn-fill pull-right" name="editRoom">Save Changes</button>
+                                        <div class="clearfix "></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                                 </div>
                             </div>
                         </div>
