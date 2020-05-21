@@ -88,12 +88,7 @@ else{
                             <p>View Rooms</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="./editroom.php">
-                            <i class="nc-icon nc-settings-tool-66"></i>
-                            <p>Edit Rooms</p>
-                        </a>
-                    </li>
+                    
                     <li>
                         <a class="nav-link" href="./manageroom.php">
                             <i class="nc-icon nc-preferences-circle-rotate"></i>
@@ -181,7 +176,7 @@ else{
                                          ]};
                                          // Create a new line chart object where as first parameter we pass in a selector
                                          // that is resolving to our chart container element. The Second parameter
-                                         // is the actual data object.
+                                         // is the actual data 
                                          new Chartist.Bar('.ct-bar', data);
                                     </script>
                                     <div class="legend">
