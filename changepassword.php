@@ -16,7 +16,7 @@
            <!-- Form For Login -->
     
 
-        <form class="form-group col-md-4 mx-auto align-middle" id="login_form " action="#" method="POST">
+        <form class="form-group col-md-4 mx-auto align-middle" id="login_form" action="controller/changeControl.php" method="POST">
 
                <div class="text-left">
                <img class="mb-6 " src="view/images/ashesi.png" alt="logo" width="30%">
